@@ -55,3 +55,6 @@ discover-bremen-sounds/
 
 # Browser-test screenshots and snapshots (Playwright)
 .playwright-mcp/
+
+# Generated submission zips (see README, 'Submitting only lib/')
+submission/
