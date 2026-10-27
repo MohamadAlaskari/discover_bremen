@@ -161,6 +161,13 @@ ready in `submission/`:
 | `submission/lib.zip` | `lib/` with the **package-free** `SoundService` | only `lib/` may be uploaded (as in the brief) |
 | `submission/lib_pubspec_assets.zip` | `lib/` (audioplayers version), `pubspec.yaml`, `assets/` | the lecturer allows pubspec + assets |
 
+The zips are snapshots. After you change anything in `lib/` (for example
+the tips), build them again:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tool\make_submission.ps1
+```
+
 The package-free version is `docs/sound_service_lib_only.dart`. It has the
 same public API, so no screen changes: sounds become the system click, and
 haptics, stamp, voice bubbles and tower stay. To switch the project yourself:
