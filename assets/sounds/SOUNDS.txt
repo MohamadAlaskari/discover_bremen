@@ -1,0 +1,21 @@
+Discover Bremen - The Fifth Musician: sound set
+Format: MP3 192 kbps, 44.1 kHz. band_1..band_4 are stereo, all other files mono.
+Band song: G major, 96 BPM, 4/4, chords | G | C | D | G |, 4 bars plus ring-out. All four band files
+have identical length and timing; each animal adds one layer: donkey = lute, dog = kettledrums,
+cat = night music (serenade), rooster = 'a good voice' (brass call).
+
+name | duration | what it is | app moment
+band_1.mp3 | 11.50 s | Band song, donkey only: lute arpeggios over G-C-D-G, final strum left to ring | 'Hear your band' with 1 animal
+band_2.mp3 | 11.50 s | Band song + dog: kettledrums on beats 1 and 3, a roll into the last bar | 'Hear your band' with 2 animals
+band_3.mp3 | 11.50 s | Band song + cat: soft serenade melody (flute/violin-like night music) | 'Hear your band' with 3 animals
+band_4.mp3 | 11.50 s | Band song + rooster: brass 'ki-ke-ri-ki' calls = the full concert | 'Hear your band' with 4 animals; Bremer Loch concert (plays right after sfx_coin)
+voice_donkey.mp3 | 1.60 s | 'I-A': a short high lute strum, then a longer low one, falling like a bray | Donkey joins after its place is stamped
+voice_dog.mp3 | 1.20 s | 'Wuff wuff': two kettledrum hits, D2 then a louder G2 | Dog joins after its place is stamped
+voice_cat.mp3 | 1.40 s | 'Mi-au': serenade voice gliding B4 up to E5 and down to C5, with vibrato | Cat joins after its place is stamped
+voice_rooster.mp3 | 1.60 s | 'Ki-ke-ri-ki': brass call G4-B4-D5, then a long G5 with vibrato | Rooster joins after its place is stamped
+sfx_stamp.mp3 | 0.42 s | Rubber stamp slammed on paper: low thump, wooden thock, rubber slap, paper crackle | Mark as Visited
+sfx_coin.mp3 | 1.60 s | Coin clinks on the bronze lid, bounces twice, drops down the shaft with a hollow echo | Bremer Loch concert (plays first, then band_4)
+sfx_undo.mp3 | 0.50 s | Two soft, quiet lute plucks descending D4 -> G3 | Undo
+
+All sounds were synthesized from scratch for this project (Python with NumPy/SciPy: Karplus-Strong
+strings, modal kettledrum, additive voices, synthetic reverb). No third-party samples or recordings were used.
