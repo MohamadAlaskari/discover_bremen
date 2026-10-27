@@ -29,11 +29,7 @@ class LocalTipCard extends StatelessWidget {
           children: [
             const Row(
               children: [
-                Icon(
-                  Icons.lightbulb,
-                  size: 20,
-                  color: AppColors.iconNote,
-                ),
+                Icon(Icons.lightbulb, size: 20, color: AppColors.iconNote),
                 SizedBox(width: AppSpacing.xs),
                 Expanded(
                   child: Text(

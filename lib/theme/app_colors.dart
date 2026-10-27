@@ -27,21 +27,39 @@ abstract final class AppColors {
   static const coin = Color(0xFFC99A2E);
 
   // Further Figma variables that single components need.
-  static const brandSubtle = Color(0xFFFBE9EA); // bg/brand-subtle: ring of the "Next" marker
-  static const borderStrong = Color(0xFFB9AA9B); // border/strong: dashed route trail
-  static const iconNote = Color(0xFF7C5C10); // icon/note: lightbulb on the tip card
-  static const coinEdge = Color(0xFF7C5C10); // coin/edge: rim and € of the coin
+
+  /// bg/brand-subtle: ring around the "Next" marker.
+  static const brandSubtle = Color(0xFFFBE9EA);
+
+  /// border/strong: dashed route trail, upcoming marker.
+  static const borderStrong = Color(0xFFB9AA9B);
+
+  /// icon/note: lightbulb on the local tip card.
+  static const iconNote = Color(0xFF7C5C10);
+
+  /// coin/edge: rim and € of the coin.
+  static const coinEdge = Color(0xFF7C5C10);
 
   // White on brand red and on the night background. Figma has one variable
-  // per role (bg/on-brand-subtle, text/on-brand-faded, …); they share these
-  // five opacities.
-  static const onBrandSubtle = Color(0x26FFFFFF); // 15 %: pills, locked slots, night cards
-  static const onBrandMuted = Color(0x59FFFFFF); // 35 %: empty progress, page dots, notes
-  static const onBrandFaded = Color(0x80FFFFFF); // 50 %: dashed borders, locked emoji, deco
-  static const onBrandSoft = Color(0xBFFFFFFF); // 75 %: small labels, stamp backing
-  static const onBrandText = Color(0xE5FFFFFF); // 90 %: body text on red
+  // per role (bg/on-brand-subtle, text/on-brand-faded, …); they all use
+  // one of these five opacities.
 
-  // Animals (collection "Color", group animal/): strong colour + subtle background.
+  /// 15 %: pills, locked slots, cards on the night background.
+  static const onBrandSubtle = Color(0x26FFFFFF);
+
+  /// 35 %: empty progress segments, page dots, music notes.
+  static const onBrandMuted = Color(0x59FFFFFF);
+
+  /// 50 %: dashed borders, locked animals, deco circles.
+  static const onBrandFaded = Color(0x80FFFFFF);
+
+  /// 75 %: small labels on red / night, stamp backing.
+  static const onBrandSoft = Color(0xBFFFFFFF);
+
+  /// 90 %: body text on red.
+  static const onBrandText = Color(0xE5FFFFFF);
+
+  // Animals (group animal/): strong colour + subtle background.
   static const donkey = Color(0xFF6A5B4E);
   static const donkeySubtle = Color(0xFFEFE9E3);
   static const dog = Color(0xFF2F6F8F);

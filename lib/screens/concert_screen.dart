@@ -163,9 +163,7 @@ class _ConcertScreenState extends State<ConcertScreen>
                 ),
                 Text(
                   'Evening concert',
-                  style: AppText.titleMedium.copyWith(
-                    color: AppColors.onNight,
-                  ),
+                  style: AppText.titleMedium.copyWith(color: AppColors.onNight),
                 ),
               ],
             ),

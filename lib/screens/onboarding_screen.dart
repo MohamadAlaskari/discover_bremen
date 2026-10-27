@@ -231,8 +231,7 @@ class _StoryPage extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final keyboardOpen = MediaQuery.viewInsetsOf(context).bottom > 0;
-        if (keyboardOpen ||
-            constraints.maxHeight < _minHeightForIllustration) {
+        if (keyboardOpen || constraints.maxHeight < _minHeightForIllustration) {
           return SingleChildScrollView(reverse: true, child: text);
         }
         return Column(
@@ -274,10 +273,7 @@ class _StatueIllustration extends StatelessWidget {
             top: 40,
             child: Column(
               children: [
-                MusicianTower(
-                  unlocked: Animal.values.toSet(),
-                  scale: _scale,
-                ),
+                MusicianTower(unlocked: Animal.values.toSet(), scale: _scale),
                 Container(
                   width: 150,
                   height: 14,

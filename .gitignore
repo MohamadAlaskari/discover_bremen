@@ -52,3 +52,6 @@ app.*.map.json
 
 # Unzipped copy of discover-bremen-sounds.zip - the app uses assets/sounds/
 discover-bremen-sounds/
+
+# Browser-test screenshots and snapshots (Playwright)
+.playwright-mcp/

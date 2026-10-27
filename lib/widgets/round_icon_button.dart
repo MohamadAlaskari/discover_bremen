@@ -40,7 +40,10 @@ class RoundIconButton extends StatelessWidget {
     final (background, foreground) = switch (variant) {
       RoundButtonVariant.surface => (AppColors.surface, AppColors.textPrimary),
       RoundButtonVariant.ghost => (Colors.transparent, AppColors.textPrimary),
-      RoundButtonVariant.onBrand => (AppColors.onBrandSubtle, AppColors.surface),
+      RoundButtonVariant.onBrand => (
+        AppColors.onBrandSubtle,
+        AppColors.surface,
+      ),
     };
     return DecoratedBox(
       decoration: BoxDecoration(

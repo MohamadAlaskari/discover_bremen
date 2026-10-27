@@ -34,20 +34,21 @@ abstract final class AppTheme {
       useMaterial3: true,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: AppColors.canvas,
-      textTheme: const TextTheme(
-        displayLarge: AppText.displayLarge,
-        headlineMedium: AppText.headlineMedium,
-        titleLarge: AppText.titleLarge,
-        titleMedium: AppText.titleMedium,
-        bodyLarge: AppText.bodyLarge,
-        bodyMedium: AppText.bodyMedium,
-        labelLarge: AppText.labelLarge,
-        labelMedium: AppText.labelMedium,
-        labelSmall: AppText.labelSmall,
-      ).apply(
-        bodyColor: AppColors.textPrimary,
-        displayColor: AppColors.textPrimary,
-      ),
+      textTheme:
+          const TextTheme(
+            displayLarge: AppText.displayLarge,
+            headlineMedium: AppText.headlineMedium,
+            titleLarge: AppText.titleLarge,
+            titleMedium: AppText.titleMedium,
+            bodyLarge: AppText.bodyLarge,
+            bodyMedium: AppText.bodyMedium,
+            labelLarge: AppText.labelLarge,
+            labelMedium: AppText.labelMedium,
+            labelSmall: AppText.labelSmall,
+          ).apply(
+            bodyColor: AppColors.textPrimary,
+            displayColor: AppColors.textPrimary,
+          ),
       iconTheme: const IconThemeData(color: AppColors.textPrimary),
 
       // Primary button: brand red, darker while pressed (Primary/Pressed).

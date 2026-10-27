@@ -147,13 +147,22 @@ class _BremerLochState extends State<BremerLoch>
               right: inset,
               bottom: inset,
               child: DecoratedBox(
-                decoration: BoxDecoration(shape: BoxShape.circle, border: groove),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: groove,
+                ),
               ),
             ),
           for (var i = 0; i < 8; i++)
             Positioned(
-              left: center + rivetRing * math.cos((22.5 + 45 * i) * math.pi / 180) - rivet / 2,
-              top: center + rivetRing * math.sin((22.5 + 45 * i) * math.pi / 180) - rivet / 2,
+              left:
+                  center +
+                  rivetRing * math.cos((22.5 + 45 * i) * math.pi / 180) -
+                  rivet / 2,
+              top:
+                  center +
+                  rivetRing * math.sin((22.5 + 45 * i) * math.pi / 180) -
+                  rivet / 2,
               child: const SizedBox.square(
                 dimension: rivet,
                 child: DecoratedBox(

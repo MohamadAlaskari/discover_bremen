@@ -1,7 +1,10 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../data/places.dart';
+import '../models/animal.dart';
 import '../models/app_sound.dart';
 import '../models/place.dart';
 import '../services/sound_service.dart';
@@ -68,7 +71,8 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
 
     await Future<void>.delayed(AppMotion.snackbarDelay);
     if (!mounted) return;
-    _messenger.currentState // 700 ms: offer UNDO
+    _messenger
+        .currentState // 700 ms: offer UNDO
       ?..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
@@ -231,11 +235,17 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
               Positioned(
                 right: center + 52,
                 bottom: _heroHeight - 168,
-                child: VoiceBubble(animal: animal, visible: _showVoice),
+                child: VoiceBubble(
+                  animal: animal,
+                  visible: _showVoice,
+                  // "Kikeriki!" is long: Figma draws this bubble at 90 %.
+                  size: animal == Animal.rooster ? 0.9 : 1,
+                ),
               ),
-              // The big stamp lands on the right half of the badge.
+              // The big stamp lands on the right half of the badge. On
+              // phones narrower than Figma it moves left to stay on screen.
               Positioned(
-                left: center + 11.4,
+                left: math.min(center + 11.4, constraints.maxWidth - 180),
                 top: 118,
                 width: 176,
                 height: 107.5,
@@ -262,9 +272,7 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: const BoxDecoration(
         color: AppColors.canvas,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppRadius.xl),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

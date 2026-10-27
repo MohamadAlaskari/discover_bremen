@@ -60,27 +60,26 @@ class RouteStopTile extends StatelessWidget {
 
   Widget _card() {
     final visited = status == StopStatus.visited;
-    final (borderColor, borderWidth, overlineColor, statusText) =
-        switch (status) {
-          StopStatus.upcoming => (
-            AppColors.border,
-            1.0,
-            AppColors.textSecondary,
-            'Not visited yet',
-          ),
-          StopStatus.next => (
-            AppColors.brand,
-            1.5,
-            AppColors.brand,
-            'Next stop',
-          ),
-          StopStatus.visited => (
-            AppColors.success,
-            1.0,
-            AppColors.success,
-            'Visited',
-          ),
-        };
+    final (
+      borderColor,
+      borderWidth,
+      overlineColor,
+      statusText,
+    ) = switch (status) {
+      StopStatus.upcoming => (
+        AppColors.border,
+        1.0,
+        AppColors.textSecondary,
+        'Not visited yet',
+      ),
+      StopStatus.next => (AppColors.brand, 1.5, AppColors.brand, 'Next stop'),
+      StopStatus.visited => (
+        AppColors.success,
+        1.0,
+        AppColors.success,
+        'Visited',
+      ),
+    };
     final radius = BorderRadius.circular(AppRadius.lg);
 
     return Stack(

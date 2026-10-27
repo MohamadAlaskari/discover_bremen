@@ -143,7 +143,9 @@ void main() {
     expect(find.byType(ConcertScreen), findsOneWidget);
 
     final semantics = tester.ensureSemantics();
-    await tester.tap(find.bySemanticsLabel('Coin. Drop it into the Bremer Loch'));
+    await tester.tap(
+      find.bySemanticsLabel('Coin. Drop it into the Bremer Loch'),
+    );
     semantics.dispose();
     await tester.pump(AppMotion.coinToBand);
     for (var i = 0; i < 5; i++) {
@@ -204,9 +206,7 @@ void main() {
       expect(find.text('Start my journey'), findsOneWidget);
     });
 
-    testWidgets('no overflow on $label: details of every stop', (
-      tester,
-    ) async {
+    testWidgets('no overflow on $label: details of every stop', (tester) async {
       useScreen(tester, size);
       for (final place in places) {
         for (final visited in [false, true]) {

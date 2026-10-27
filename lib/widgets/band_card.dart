@@ -58,7 +58,9 @@ class BandCard extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      complete ? 'Band complete!' : '$count of $total musicians',
+                      complete
+                          ? 'Band complete!'
+                          : '$count of $total musicians',
                       style: AppText.headlineMedium.copyWith(
                         color: AppColors.surface,
                       ),
@@ -77,7 +79,9 @@ class BandCard extends StatelessWidget {
                       const SizedBox(height: AppSpacing.xxs),
                       _PlayPill(
                         musicians: count,
-                        label: complete ? 'Hear the full band' : 'Hear your band',
+                        label: complete
+                            ? 'Hear the full band'
+                            : 'Hear your band',
                       ),
                     ],
                   ],

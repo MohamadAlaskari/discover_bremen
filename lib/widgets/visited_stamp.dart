@@ -113,7 +113,10 @@ class VisitedStamp extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.sm),
       ),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: 3),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.xs,
+          vertical: 3,
+        ),
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.brand),
           borderRadius: BorderRadius.circular(5),
