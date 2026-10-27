@@ -29,7 +29,8 @@ abstract final class AppColors {
   // Further Figma variables that single components need.
   static const brandSubtle = Color(0xFFFBE9EA); // bg/brand-subtle: ring of the "Next" marker
   static const borderStrong = Color(0xFFB9AA9B); // border/strong: dashed route trail
-  static const iconNote = Color(0xFF7C5C10); // icon/note + coin/edge: lightbulb, € on the coin
+  static const iconNote = Color(0xFF7C5C10); // icon/note: lightbulb on the tip card
+  static const coinEdge = Color(0xFF7C5C10); // coin/edge: rim and € of the coin
 
   // White on brand red and on the night background. Figma has one variable
   // per role (bg/on-brand-subtle, text/on-brand-faded, …); they share these
