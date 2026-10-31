@@ -1,7 +1,7 @@
 # Discover Bremen — The Fifth Musician
 
-A small Flutter app for the BIP course *Mobile Programming and Technologies*
-(HSB Bremen) by Mohamad Alaskari.
+A Flutter app for the BIP course *Mobile Programming and Technologies*
+(HSB Bremen) by Mohamad Alaskari, 2026.
 
 The Bremen Town Musicians never reached Bremen. In this app you are the
 **fifth musician**: you walk to four places in the old town, and every visit
@@ -18,22 +18,29 @@ coin into the real *Bremer Loch* and the band plays for you.
 ## Run it
 
 Needs **Flutter 3.38 or newer** (built and tested with Flutter 3.47.7 /
-Dart 3.13). Older versions do not compile the code: the UNDO snackbar uses
-`SnackBar(persist: false)`, which came with Flutter 3.38.
+Dart 3.13). The UNDO snackbar uses `SnackBar(persist: false)`, which came
+with Flutter 3.38.
 
 ```bash
 flutter pub get
 flutter run -d chrome        # or an Android emulator / phone
 flutter test                 # 22 widget tests
-flutter analyze              # must say: No issues found!
+flutter analyze              # No issues found!
 ```
 
-In Chrome you can drag with the mouse like a finger: swipe the onboarding
-and the photos, pull the story sheet up (`AppScrollBehavior`).
+In Chrome you can also drag with the mouse: swipe the onboarding pages and
+the photos, and pull the story sheet up.
 
-On Windows, the project path contains spaces. Web and tests work. If an
-Android build ever fails because of the path, move the project to
-`D:\dev\discover_bremen`.
+### Running the submitted zip
+
+| File | Contains | How to run |
+|---|---|---|
+| `lib.zip` | `lib/` only | `flutter create discover_bremen`, replace its `lib/` folder with this one, then `flutter run`. No extra package is needed: sounds play as a short system click. |
+| `lib_pubspec_assets.zip` | `lib/`, `pubspec.yaml`, `assets/`, this README | `flutter create discover_bremen`, replace `lib/` and `pubspec.yaml`, add `assets/`, then `flutter pub get` and `flutter run`. This version plays the real sounds. |
+
+`lib/` uses relative imports only, so it works in a project with any name.
+The photos on the Read-more screens come from the internet; without a
+connection the app shows a placeholder with the photo's caption instead.
 
 ## What to try
 
@@ -55,12 +62,13 @@ Android build ever fails because of the path, move the project to
 The speaker icon mutes every sound. Every sound has a visual twin (stamp,
 voice bubble, tower), so the app is fully usable with the sound off.
 
-## How the brief is covered
+## How the assignment is covered
 
 | Requirement | Where |
 |---|---|
 | List of ≥ 3 places (`ListView.builder`) | `lib/screens/home_screen.dart`, one `RouteStopTile` per stop |
 | Details: name, short description, icon/image, Mark as Visited | `lib/screens/place_details_screen.dart` |
+| Icons and images | animal badges, Material icons, three photos per place on the Read-more screen |
 | `Navigator.push` / `Navigator.pop` | Home: `await Navigator.push<bool>(…)`; details: `Navigator.pop(context, _visited)` (also via system back with `PopScope`) |
 | `setState`, visited state after going back | Home keeps `Set<int> _visitedIds`; `setState` adds or removes the id |
 | Visited is visible (✅ / stamp) | `RouteStopTile` (stamp + green trail + check), `BandCard` (tower + progress) |
@@ -105,7 +113,7 @@ lib/
 assets/sounds/                  11 mp3 + SOUNDS.txt
 docs/
   place_stories.json            Read-more texts, photo URLs, credits, sources (input, not compiled)
-  sound_service_lib_only.dart   SoundService without packages (see below)
+  sound_service_lib_only.dart   SoundService without packages (used in lib.zip)
 test/
   app_test.dart                 flows + layout on small and large phones
   place_story_test.dart         Read more: every story, swipe, sheet, sections, offline
@@ -143,7 +151,7 @@ The code uses the same names as the design file:
 | Info Row · Nearby Card | `InfoRow` · `NearbyCard` |
 | Local tradition | `LocalTipCard(title: 'Local tradition')` |
 
-**Mark as Visited** follows the Flutter Handoff sequence:
+**Mark as Visited** follows the timing from the Figma prototype:
 
 | Time | What happens |
 |---|---|
@@ -158,8 +166,7 @@ clockwise. Figma's "−12°" is therefore `+12°` in Flutter
 
 ## Read more (place story)
 
-Figma section "08 · Read more — place story". `PlaceStoryScreen` is a
-`Stack` with three layers:
+`PlaceStoryScreen` is a `Stack` with three layers:
 
 1. **Photos** (`PhotoCarousel`, 360 px, fixed at the top): three photos per
    stop in a `PageView.builder`, with the photographer's credit on each slide
@@ -175,15 +182,14 @@ Figma section "08 · Read more — place story". `PlaceStoryScreen` is a
 Each `Place` holds its `PlaceStory` as the required field `place.story`, so
 the compiler checks that every stop has its Read-more content (no lookup by
 id). The facts come from `docs/place_stories.json`, which also lists the
-sources; the final wording is in `lib/data/place_stories.dart`. The sheet
-uses the cream canvas colour, as in the Figma frames.
+sources; the final wording is in `lib/data/place_stories.dart`.
 
 **Photos:** loaded from `images.unsplash.com` with `Image.network`, so they
-need no assets and no extra package (they work in both zips). Unsplash
-License: free to use, credit not required; the app shows the credits anyway,
-on each slide and under *Photo credits*. While a photo loads, or without
-internet, a placeholder in the animal's colour shows an image icon and the
-caption, so the screen always looks complete.
+need no assets and no extra package. Unsplash License: free to use, credit
+not required; the app shows the credits anyway, on each slide and under
+*Photo credits*. While a photo loads, or without internet, a placeholder in
+the animal's colour shows an image icon and the caption, so the screen
+always looks complete.
 
 ## Sounds
 
@@ -202,46 +208,8 @@ the only extra package:
 
 Audio errors are caught, so a missing speaker never crashes a screen.
 
-## Submitting only `lib/`
-
-The brief says to upload only the compressed `lib/` folder. The sound version
-also needs `pubspec.yaml` (audioplayers) and `assets/sounds/`. Two zips are
-ready in `submission/`:
-
-| File | Contains | Use it when |
-|---|---|---|
-| `submission/lib.zip` | `lib/` with the **package-free** `SoundService` | only `lib/` may be uploaded (as in the brief) |
-| `submission/lib_pubspec_assets.zip` | `lib/` (audioplayers version), `pubspec.yaml`, `assets/` | the lecturer allows pubspec + assets |
-
-The zips are snapshots. After you change anything in `lib/` (for example
-the tips), build them again:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File tool\make_submission.ps1
-```
-
-The package-free version is `docs/sound_service_lib_only.dart`. It has the
-same public API, so no screen changes: sounds become the system click, and
-haptics, stamp, voice bubbles and tower stay. To switch the project yourself:
-
-1. Copy `docs/sound_service_lib_only.dart` over `lib/services/sound_service.dart`.
-2. Remove `audioplayers` and the `assets:` entry from `pubspec.yaml`.
-3. Run `flutter pub get` and `flutter analyze`.
-
-Both versions were checked with `flutter analyze` (0 issues) and all tests.
-`lib/` uses relative imports only, so it works in a project with any name.
-
-## Before submitting (to do)
-
-- [ ] Read the texts once and change any word that does not sound like you:
-      descriptions and tips in `lib/data/places.dart`, Read-more texts in
-      `lib/data/place_stories.dart`.
-- [ ] Look at the 12 **photos** once (open each Unsplash page link in
-      `docs/place_stories.json`) and replace any you do not like.
-- [ ] Check every fact you keep (dates, names) once more.
-- [ ] Ask the lecturer which Flutter version they use: the code needs 3.38
-      or newer.
-- [ ] Test once with the sound off: stamp, voice bubble and tower must still
-      tell the story.
-- [ ] Pick the zip (see above) and upload it with the Google Form before
-      **18 Nov 2026, 23:59** (German time).
+`docs/sound_service_lib_only.dart` is the same class without any package.
+It has the same public API, so no screen changes: sounds become the system
+click, and haptics, stamp, voice bubbles and tower stay. `lib.zip` contains
+this version, so it runs in a fresh Flutter project without `audioplayers`.
+Both versions pass `flutter analyze` (0 issues) and all tests.

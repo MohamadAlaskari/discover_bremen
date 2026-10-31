@@ -3,12 +3,13 @@
 #
 # submission\lib.zip                 lib/ with the package-free SoundService
 #                                    (use it if only lib/ may be uploaded)
-# submission\lib_pubspec_assets.zip  lib/ + pubspec.yaml + assets/ (sound version)
+# submission\lib_pubspec_assets.zip  lib/ + pubspec.yaml + assets/ + README.md
+#                                    (sound version; the README says how to run it)
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path -Parent $PSScriptRoot)
 New-Item -ItemType Directory -Force submission | Out-Null
 
-Compress-Archive -Path lib, pubspec.yaml, assets `
+Compress-Archive -Path lib, pubspec.yaml, assets, README.md `
   -DestinationPath submission\lib_pubspec_assets.zip -Force
 
 # Copy lib/ outside the project (the IDE would lock files inside it) and swap
