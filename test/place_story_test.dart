@@ -1,4 +1,3 @@
-import 'package:discover_bremen/data/place_stories.dart';
 import 'package:discover_bremen/data/places.dart';
 import 'package:discover_bremen/screens/place_details_screen.dart';
 import 'package:discover_bremen/screens/place_story_screen.dart';
@@ -49,7 +48,7 @@ void main() {
       await tester.tap(find.text('Read more'));
       await tester.pumpAndSettle();
 
-      final story = placeStories[place.id]!;
+      final story = place.story;
       expect(find.byType(PlaceStoryScreen), findsOneWidget);
       expect(find.text(place.overline.toUpperCase()), findsOneWidget);
       expect(find.text(story.about), findsOneWidget);
@@ -67,7 +66,7 @@ void main() {
 
   testWidgets('photos swipe and the dots follow', (tester) async {
     useScreen(tester, large);
-    final story = placeStories[1]!;
+    final story = places.first.story;
     await tester.pumpWidget(app(PlaceStoryScreen(place: places.first)));
     await tester.pumpAndSettle();
     expect(tester.widget<PageDots>(find.byType(PageDots)).page, 0);
@@ -136,7 +135,7 @@ void main() {
   testWidgets('all sections from Figma and the photo credits', (tester) async {
     useScreen(tester, large);
     for (final place in places) {
-      final story = placeStories[place.id]!;
+      final story = place.story;
       await tester.pumpWidget(
         app(PlaceStoryScreen(key: UniqueKey(), place: place)),
       );

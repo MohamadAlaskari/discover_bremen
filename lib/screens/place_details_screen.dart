@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../data/place_stories.dart';
 import '../data/places.dart';
 import '../models/animal.dart';
 import '../models/app_sound.dart';
@@ -322,19 +321,18 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
                 const Expanded(
                   child: Text('About', style: AppText.titleMedium),
                 ),
-                if (placeStories.containsKey(place.id))
-                  // Figma "Text Link": brand text, chevron at the end.
-                  TextButton.icon(
-                    onPressed: _openStory,
-                    iconAlignment: IconAlignment.end,
-                    style: TextButton.styleFrom(
-                      minimumSize: const Size.square(AppSpacing.xxxl),
-                      padding: const EdgeInsets.only(left: AppSpacing.sm),
-                      iconSize: 18,
-                    ),
-                    icon: const Icon(Icons.chevron_right),
-                    label: const Text('Read more'),
+                // Figma "Text Link": brand text, chevron at the end.
+                TextButton.icon(
+                  onPressed: _openStory,
+                  iconAlignment: IconAlignment.end,
+                  style: TextButton.styleFrom(
+                    minimumSize: const Size.square(AppSpacing.xxxl),
+                    padding: const EdgeInsets.only(left: AppSpacing.sm),
+                    iconSize: 18,
                   ),
+                  icon: const Icon(Icons.chevron_right),
+                  label: const Text('Read more'),
+                ),
               ],
             ),
           ),

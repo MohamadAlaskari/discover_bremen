@@ -1,6 +1,10 @@
 import 'animal.dart';
+import 'place_story.dart';
 
 /// One stop on the route: a place in Bremen and the animal it frees.
+///
+/// The short texts for the list and the details screen live here; the long
+/// Read-more content is the [story] (composition: a Place has a PlaceStory).
 class Place {
   const Place({
     required this.id,
@@ -13,6 +17,7 @@ class Place {
     required this.facts,
     required this.about,
     required this.tip,
+    required this.story,
   });
 
   /// 1–4: the stop number on the route. Home keeps a Set of these ids.
@@ -44,6 +49,11 @@ class Place {
 
   /// The "Local tip" card.
   final String tip;
+
+  /// Everything the Read-more screen shows: photos, story, tradition, visit
+  /// info and nearby sights. It is required, so no stop can miss one and no
+  /// screen has to look it up by id.
+  final PlaceStory story;
 
   /// "Stop 1 · Marktplatz" (shown in capitals).
   String get overline => 'Stop $id · $area';

@@ -1,11 +1,13 @@
 import '../models/animal.dart';
 import '../models/place.dart';
+import 'place_stories.dart';
 
 /// The four stops of the walk, in route order (~2 km through the old town).
 ///
-/// Names, chips and the About texts come from the Figma details frames. The
-/// descriptions and local tips are rewritten in plain English with the same
-/// facts.
+/// Each stop carries everything about it, including its Read-more content
+/// (`story`, from place_stories.dart). Names, chips and the About texts come
+/// from the Figma details frames; the descriptions and local tips are
+/// rewritten in plain English with the same facts.
 const places = <Place>[
   Place(
     id: 1,
@@ -25,6 +27,7 @@ const places = <Place>[
     tip:
         'Hold both of the donkey’s front legs and make a wish. It’s supposed '
         'to bring luck, so don’t be shy.',
+    story: townMusiciansStory,
   ),
   Place(
     id: 2,
@@ -44,6 +47,7 @@ const places = <Place>[
     tip:
         'Walk as far as the Teerhof bridge and then turn around. The old town '
         'skyline is right there behind you.',
+    story: schlachteStory,
   ),
   Place(
     id: 3,
@@ -62,6 +66,7 @@ const places = <Place>[
     tip:
         'Leave the main lane and try the side alleys. It gets much quieter '
         'there.',
+    story: schnoorStory,
   ),
   Place(
     id: 4,
@@ -84,5 +89,6 @@ const places = <Place>[
     tip:
         'Go up the tower on a clear day. From the top you can see the whole '
         'route you just walked.',
+    story: stPetriStory,
   ),
 ];

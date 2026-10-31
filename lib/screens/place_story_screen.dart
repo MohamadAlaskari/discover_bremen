@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../data/place_stories.dart';
 import '../models/place.dart';
 import '../models/place_story.dart';
 import '../theme/app_colors.dart';
@@ -44,7 +43,7 @@ class _PlaceStoryScreenState extends State<PlaceStoryScreen> {
   /// Height of the grip area: the 4 px grip plus the 20 px gap under it.
   static const _gripArea = 24.0;
 
-  PlaceStory get _story => placeStories[widget.place.id]!;
+  PlaceStory get _story => widget.place.story;
 
   @override
   void dispose() {

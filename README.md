@@ -72,10 +72,10 @@ lib/
   main.dart                     MaterialApp, theme, SoundService.instance.init()
   data/
     places.dart                 the 4 stops (names and About texts from Figma)
-    place_stories.dart          Read-more content per stop (from docs/place_stories.json)
+    place_stories.dart          Read-more content: one PlaceStory constant per stop
     app_strings.dart            AppStrings.appName = 'The Fifth Musician', tagline, author
   models/
-    place.dart                  Place + PlaceFacts
+    place.dart                  Place (holds its PlaceStory) + PlaceFacts
     place_story.dart            PlaceStory, StoryChip, StoryPhoto, NearbySight
     animal.dart                 the 4 musicians: emoji, colours, call, instrument, voice, haptic
     app_sound.dart              AppSound enum (= Figma "Sound" variables)
@@ -172,9 +172,11 @@ Figma section "08 · Read more — place story". `PlaceStoryScreen` is a
    Location & visit → Nearby sights → Photo credits.
 3. **Back button** above both.
 
-The facts come from `docs/place_stories.json`, which also lists the sources.
-The final wording is in `lib/data/place_stories.dart`. The sheet uses the
-cream canvas colour, as in the Figma frames.
+Each `Place` holds its `PlaceStory` as the required field `place.story`, so
+the compiler checks that every stop has its Read-more content (no lookup by
+id). The facts come from `docs/place_stories.json`, which also lists the
+sources; the final wording is in `lib/data/place_stories.dart`. The sheet
+uses the cream canvas colour, as in the Figma frames.
 
 **Photos:** loaded from `images.unsplash.com` with `Image.network`, so they
 need no assets and no extra package (they work in both zips). Unsplash

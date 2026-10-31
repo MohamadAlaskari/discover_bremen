@@ -142,9 +142,9 @@ docs/place_stories.json          Read-more texts, photo URLs, credits and source
   - not tappable (keeps navigation simple)
 - `InfoRow` and `NearbyCard` grow with their text (two-line addresses must not overlap).
 - Data:
-  - Generate `lib/models/place_story.dart` (`PlaceStory`, `StoryPhoto`, `NearbySight`, `StoryChip`) and `lib/data/place_stories.dart` (a `const Map<int, PlaceStory>` keyed by place id) from `docs/place_stories.json`.
+  - Generate `lib/models/place_story.dart` (`PlaceStory`, `StoryPhoto`, `NearbySight`, `StoryChip`) and `lib/data/place_stories.dart` (one `const PlaceStory` per stop) from `docs/place_stories.json`. Each `Place` holds its story as the required field `Place.story` (composition, no lookup by id).
   - If the file is not in `docs/`, look next to this CLAUDE.md or in the parent folder.
-  - Copy the texts exactly. Put `// TODO(Mohamad): rewrite in your own words` above each place.
+  - Keep the facts from the JSON. The wording was rewritten in plain English on 31 Oct 2026 (Mohamad asked for it); there are no TODO markers.
 - Photos:
   - Hotlinked from images.unsplash.com. Unsplash License: free to use, attribution not required; we still show the credits on each slide and in "Photo credits".
   - images.unsplash.com sends CORS headers, so the photos also load in Chrome. If one fails on web, read the console; the errorBuilder keeps the layout intact.
@@ -165,8 +165,8 @@ docs/place_stories.json          Read-more texts, photo URLs, credits and source
 
 ## 6. Content
 - Texts (titles, descriptions, chips, About, local tips) come from the Figma details frames.
-- The 4 local tips and the short descriptions are placeholders. Mohamad must rewrite them in his own words. Mark each one with `// TODO(Mohamad): rewrite in your own words`.
-- Read-more texts (about, story, tradition, visit, nearby) come from `docs/place_stories.json`. They were checked against the sources listed there, but they are drafts too: same TODO marker.
+- The short descriptions and the 4 local tips were rewritten in plain English with the same facts (31 Oct 2026, Mohamad asked for it). The About texts on the details screen are still the Figma texts.
+- Read-more texts (about, story, tradition, visit, nearby): facts from `docs/place_stories.json` (checked against the sources listed there), wording rewritten the same way.
 
 ## 7. How to work
 1. Read the Figma file (Handoff first, then Foundations, then the screens). Post a short plan: files and order, max 15 lines. Then implement without waiting.
