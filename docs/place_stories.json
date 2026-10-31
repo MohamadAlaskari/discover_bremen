@@ -1,0 +1,329 @@
+{
+  "_about": "Content for the Read-more screens (PlaceStoryScreen) of Discover Bremen. Texts are short B1-English drafts, checked against the sources listed per place. Mohamad rewrites them in his own words before submission. Photos: Unsplash License (free to use, attribution not required; the app shows credits anyway). Distances: straight line between Wikipedia coordinates, rounded to 50 m.",
+  "checked_on": "2026-10-29",
+  "photo_license": { "name": "Unsplash License", "url": "https://unsplash.com/license" },
+  "photo_url_params": "Each photo url already asks for a 1200 px wide JPEG (auto=format&fit=crop&w=1200&q=75). Keep these parameters.",
+  "places": [
+    {
+      "id": 1,
+      "key": "town_musicians",
+      "animal": "donkey",
+      "stop_label": "STOP 1 · MARKTPLATZ",
+      "name": "Bremen Town Musicians",
+      "figma": { "collapsed": "95:1856", "expanded": "102:1938" },
+      "chips": [
+        { "label": "Marktplatz", "icon": "place" },
+        { "label": "Free", "icon": "euro" },
+        { "label": "Open-air, any time", "icon": "schedule" }
+      ],
+      "about": "A bronze statue of the four animals from the Grimm tale, standing on each other’s backs. It is about 2 m tall and stands at the west side of the Town Hall.",
+      "story": "The Brothers Grimm published the tale in 1819. The animals never reach Bremen: they find a robbers’ house and stay there. Gerhard Marcks made the statue. It was put up in 1953, first as a one-year trial.",
+      "tradition": "Hold both front legs of the donkey and make a wish. Locals say that one hand on one leg shows you are new in Bremen.",
+      "visit": {
+        "address": "Schoppensteel, west side of the Town Hall, 28195 Bremen",
+        "price": "Free",
+        "access": "Open-air, any time"
+      },
+      "photos": [
+        {
+          "url": "https://images.unsplash.com/photo-1765357480892-8707a6ad6a10?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/bronze-statue-of-four-animals-stacked-on-each-other-_JsgDqZpKCk",
+          "author": "Vlad Ion",
+          "author_handle": "@vladion21",
+          "caption": "The statue at the Town Hall"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1684777775603-5fbb6b835f79?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-statue-of-a-goat-with-birds-on-its-back-kk0hc52x-yY",
+          "author": "Hansjörg Keller",
+          "author_handle": "@kel_foto",
+          "caption": "Donkey, dog, cat and rooster"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1783614674924-948907f6126c?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/historic-building-facade-with-stone-statue-and-pointed-spires-i8MNwsdhPeo",
+          "author": "Alexandre Valdivia",
+          "author_handle": "@alevaldivia",
+          "caption": "Town Hall facade"
+        }
+      ],
+      "nearby": [
+        {
+          "name": "Bremer Rathaus",
+          "line": "Gothic town hall (1405–1410), UNESCO World Heritage since 2004.",
+          "chip": "≈ 50 m",
+          "distance_m": 50,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "account_balance" }
+        },
+        {
+          "name": "Bremer Roland",
+          "line": "Stone knight from 1404, a symbol of the city’s freedom.",
+          "chip": "≈ 50 m",
+          "distance_m": 50,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "shield" }
+        },
+        {
+          "name": "Schlachte",
+          "line": "Next stop on your route: the promenade on the Weser.",
+          "chip": "Stop 2 · ≈ 350 m",
+          "distance_m": 350,
+          "route_stop_id": 2,
+          "thumb": { "type": "animal", "animal": "dog" }
+        }
+      ],
+      "sources": [
+        { "fact": "About 2 m tall; west side of the Town Hall; Schoppensteel; touch both front legs, one hand on one leg marks a newcomer", "url": "https://www.bremen.eu/tourism/attractions/bremen-town-musicians" },
+        { "fact": "Set up on 30 September 1953 as a one-year trial; 200 cm; bronze by Gerhard Marcks; coordinates 53.07618, 8.80753", "url": "https://de.wikipedia.org/wiki/Die_Bremer_Stadtmusikanten_(Skulptur)" },
+        { "fact": "Tale first printed in 1819 (KHM 27, 2nd edition)", "url": "https://de.wikipedia.org/wiki/Die_Bremer_Stadtmusikanten" },
+        { "fact": "The animals never arrive in Bremen", "url": "https://en.wikipedia.org/wiki/Town_Musicians_of_Bremen" },
+        { "fact": "Rathaus built 1405–1410; UNESCO World Heritage with the Roland since July 2004; coordinates", "url": "https://de.wikipedia.org/wiki/Bremer_Rathaus" },
+        { "fact": "Roland erected 1404; symbol of the city's rights and freedom; coordinates", "url": "https://de.wikipedia.org/wiki/Bremer_Roland" }
+      ]
+    },
+    {
+      "id": 2,
+      "key": "schlachte",
+      "animal": "dog",
+      "stop_label": "STOP 2 · WESER",
+      "name": "Schlachte",
+      "figma": { "collapsed": "102:1998", "expanded": "102:2130" },
+      "chips": [
+        { "label": "Weser", "icon": "place" },
+        { "label": "Free", "icon": "euro" },
+        { "label": "660 m promenade", "icon": "directions_walk" }
+      ],
+      "about": "A 660 m promenade on the Weser in the old town. Restaurants and bars line the quay, next to old ships such as the Alexander von Humboldt.",
+      "story": "The name comes from Low German slagte: the posts driven into the river bank. From the 13th century this was Bremen’s harbour. In the 19th century the railway and new port basins took over. From 1993 to 2000 the quay was rebuilt as a promenade.",
+      "tradition": "In winter the Schlachte-Zauber market fills the quay with about 100 wooden huts and lit-up ships, from late November to December.",
+      "visit": {
+        "address": "Schlachte, 28195 Bremen",
+        "price": "Free",
+        "access": "Open-air, any time"
+      },
+      "photos": [
+        {
+          "url": "https://images.unsplash.com/photo-1706647899574-f687793c1b2e?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-river-filled-with-lots-of-boats-next-to-a-city-RlyPbAf9s7U",
+          "author": "Jahanzeb Ahsan",
+          "author_handle": "@jahan_photobox",
+          "caption": "Sunset on the Weser"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1764505879137-1ec598f6eb17?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/boats-docked-by-a-church-on-a-sunny-day-7UdUDQvEIqs",
+          "author": "Nikolai Kolosov",
+          "author_handle": "@nikolaikolosov",
+          "caption": "Ships along the quay"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1733747402311-8ec471f8b12f?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-boat-is-docked-at-a-dock-in-the-water-rf6meYHmgoY",
+          "author": "Peter Schulz",
+          "author_handle": "@visionaryconcepts",
+          "caption": "The Schlachte at night"
+        }
+      ],
+      "nearby": [
+        {
+          "name": "St. Martini",
+          "line": "Brick Gothic church by the river, first named in 1229.",
+          "chip": "At the Schlachte",
+          "distance_m": null,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "church" }
+        },
+        {
+          "name": "Böttcherstraße",
+          "line": "108 m of 1920s brick art, with a porcelain Glockenspiel.",
+          "chip": "≈ 250 m",
+          "distance_m": 250,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "music_note" }
+        },
+        {
+          "name": "Schnoor Quarter",
+          "line": "Next stop on your route: old lanes and tiny houses.",
+          "chip": "Stop 3 · ≈ 600 m",
+          "distance_m": 600,
+          "route_stop_id": 3,
+          "thumb": { "type": "animal", "animal": "cat" }
+        }
+      ],
+      "sources": [
+        { "fact": "About 660 m long; name from Low German 'slagte' (driving in the bank posts); harbour from the mid-13th century; railway (Weserbahnhof 1860) and new port basins from 1884; rebuilt 1993–2000 (Expo 2000 project); restaurants and bars with about 2,000 outdoor seats; ships Friedrich, Alexander von Humboldt, Roland von Bremen; begins near St. Martini; coordinates", "url": "https://de.wikipedia.org/wiki/Schlachte_(Bremen)" },
+        { "fact": "Schlachte-Zauber: about 100 wooden huts, illuminated ships; 2026 edition 23 November – 23 December", "url": "https://www.festivalsindeutschland.de/festival/schlachte-zauber-bremen" },
+        { "fact": "St. Martini first documented as a parish in 1229; late Gothic brick hall church close to the Weser", "url": "https://de.wikipedia.org/wiki/St._Martini_(Bremen)" },
+        { "fact": "Böttcherstraße: 108 m long, built 1922–1931, carillon with porcelain bells; coordinates", "url": "https://de.wikipedia.org/wiki/B%C3%B6ttcherstra%C3%9Fe_(Bremen)" }
+      ]
+    },
+    {
+      "id": 3,
+      "key": "schnoor",
+      "animal": "cat",
+      "stop_label": "STOP 3 · ALTSTADT",
+      "name": "Schnoor Quarter",
+      "figma": { "collapsed": "102:2190", "expanded": "102:2322" },
+      "chips": [
+        { "label": "Altstadt", "icon": "place" },
+        { "label": "Free", "icon": "euro" },
+        { "label": "Houses from 1401", "icon": "schedule" }
+      ],
+      "about": "Bremen’s oldest quarter: narrow lanes with small houses, shops and cafés. Some lanes are so narrow that you can touch both walls with your arms.",
+      "story": "Fishermen, boatmen and craftsmen lived here by the Balge, an arm of the Weser. “Schnoor” means string or cord in Low German and comes from the old ship trades. The oldest house, Schnoor 2, is from 1401. Many houses were restored from 1955 on.",
+      "tradition": "Look for the Katzengang, a very narrow lane. At the Bremer Bonbon Manufaktur you can watch sweets being made by hand.",
+      "visit": {
+        "address": "Schnoor, 28195 Bremen (tram stop Domsheide)",
+        "price": "Free",
+        "access": "Open-air, any time. Shops have their own hours."
+      },
+      "photos": [
+        {
+          "url": "https://images.unsplash.com/photo-1713627617744-3ecdb533ce8c?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-row-of-buildings-with-a-blue-sky-in-the-background-CvXmsF7w6O8",
+          "author": "Alain ROUILLER",
+          "author_handle": "@alainr",
+          "caption": "Old houses in the Schnoor"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1666181528393-74a1af15ec96?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-cobblestone-street-with-buildings-on-either-side-of-it-9yDsI7O65TE",
+          "author": "Manou Azadi",
+          "author_handle": "@manouazadi",
+          "caption": "A cobbled lane"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1666181526939-2c216bb961df?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-narrow-alley-between-buildings-ixHFeiXJl1Q",
+          "author": "Manou Azadi",
+          "author_handle": "@manouazadi",
+          "caption": "One of the narrow alleys"
+        }
+      ],
+      "nearby": [
+        {
+          "name": "St. Johann",
+          "line": "Catholic Brick Gothic church, built in the 14th century for Franciscan monks.",
+          "chip": "≈ 150 m",
+          "distance_m": 150,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "church" }
+        },
+        {
+          "name": "Kunsthalle Bremen",
+          "line": "Art museum of the Kunstverein, in its own building since 1849.",
+          "chip": "≈ 250 m",
+          "distance_m": 250,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "museum" }
+        },
+        {
+          "name": "St. Petri Cathedral",
+          "line": "Next stop on your route: the cathedral with two 93 m towers.",
+          "chip": "Stop 4 · ≈ 300 m",
+          "distance_m": 300,
+          "route_stop_id": 4,
+          "thumb": { "type": "animal", "animal": "rooster" }
+        }
+      ],
+      "sources": [
+        { "fact": "Name from Low German 'Schnoor' = string/cord, after the old ship crafts; fishermen, boatmen and craftsmen by the Balge; oldest house Packhaus Schnoor 2 from 1401; restoration from 1955; coordinates", "url": "https://de.wikipedia.org/wiki/Schnoor" },
+        { "fact": "Oldest quarter; lanes so narrow you can touch both sides; Katzengang; Bremer Bonbon Manufaktur; trams 2, 3, 4, 6, 8 to Domsheide", "url": "https://www.bremen.eu/tourism/sights/schnoor-quarter" },
+        { "fact": "St. Johann: Catholic Propsteikirche, built in the 14th century as Franciscan monastery church, Brick Gothic; coordinates", "url": "https://de.wikipedia.org/wiki/St._Johann_(Bremen)" },
+        { "fact": "Kunsthalle: run by the Kunstverein in Bremen, first own building 1849, at the Wallanlagen; coordinates", "url": "https://de.wikipedia.org/wiki/Kunsthalle_Bremen" }
+      ]
+    },
+    {
+      "id": 4,
+      "key": "st_petri",
+      "animal": "rooster",
+      "stop_label": "STOP 4 · DOMSHOF",
+      "name": "St. Petri Cathedral",
+      "figma": { "collapsed": "102:2382", "expanded": "102:2514" },
+      "chips": [
+        { "label": "Domshof", "icon": "place" },
+        { "label": "Museum: free", "icon": "euro" },
+        { "label": "Tower: 265 steps", "icon": "directions_walk" }
+      ],
+      "about": "Bremen’s Protestant cathedral, next to the Marktplatz. Its two west towers are about 93 m high, and 265 steps lead up the south tower.",
+      "story": "A church stood here from about 789. The oldest parts you can still see, the crypts, are from the 11th century. In the Bleikeller, eight mummified bodies lie in glass-topped coffins.",
+      "tradition": "Unmarried people who turn 30 sweep the cathedral steps while friends watch. They may stop when a “virgin” kisses them. The custom goes back to about 1890.",
+      "visit": {
+        "address": "Sandstraße 10–12, 28195 Bremen",
+        "price": "Dom-Museum free. Tower and Bleikeller: check prices.",
+        "access": "Check opening times. Tower and Bleikeller are seasonal."
+      },
+      "photos": [
+        {
+          "url": "https://images.unsplash.com/photo-1721412045350-d95576d8a762?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/a-building-with-two-towers-with-a-clock-on-each-of-its-sides-gfOrisaGMzY",
+          "author": "Jahanzeb Ahsan",
+          "author_handle": "@jahan_photobox",
+          "caption": "The two west towers"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1764505879196-2e3e5dd40208?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/historic-square-with-tram-tracks-and-cathedral-AZycgSSWK2s",
+          "author": "Nikolai Kolosov",
+          "author_handle": "@nikolaikolosov",
+          "caption": "The cathedral from the square"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1783614678134-5d7fde73a46a?auto=format&fit=crop&w=1200&q=75",
+          "page": "https://unsplash.com/photos/tram-tracks-lead-towards-a-historic-cathedral-and-modern-buildings-ZmDEztykwb0",
+          "author": "Alexandre Valdivia",
+          "author_handle": "@alevaldivia",
+          "caption": "Trams pass the cathedral"
+        }
+      ],
+      "nearby": [
+        {
+          "name": "Domshof",
+          "line": "Square north of the cathedral, with the Neptune Fountain (1991).",
+          "chip": "≈ 100 m",
+          "distance_m": 100,
+          "route_stop_id": null,
+          "thumb": { "type": "icon", "icon": "place" }
+        },
+        {
+          "name": "Bremer Loch",
+          "line": "A coin slot in the pavement by the Bürgerschaft. Drop a coin and hear the animals.",
+          "chip": "Finale",
+          "distance_m": null,
+          "route_stop_id": null,
+          "thumb": { "type": "coin" }
+        },
+        {
+          "name": "Bremen Town Musicians",
+          "line": "Stop 1: the statue where your band began.",
+          "chip": "Stop 1 · ≈ 100 m",
+          "distance_m": 100,
+          "route_stop_id": 1,
+          "thumb": { "type": "animal", "animal": "donkey" }
+        }
+      ],
+      "sources": [
+        { "fact": "Protestant (ev.-luth. Domgemeinde St. Petri); west towers about 93 m; south tower platform over 265 steps; crypts from the 11th century", "url": "https://de.wikipedia.org/wiki/Bremer_Dom" },
+        { "fact": "Church built about 789; eight mummies in glass-topped coffins in the Bleikeller; coordinates", "url": "https://en.wikipedia.org/wiki/Bremen_Cathedral" },
+        { "fact": "Address Sandstraße 10-12, 28195 Bremen; opening times differ by season", "url": "https://www.stpetridom.de/englisch/" },
+        { "fact": "Dom-Museum admission free; tower (265 steps) and Bleikeller are seasonal", "url": "https://dommuseum-bremen.de/en/besucherinfos" },
+        { "fact": "Unmarried 30-year-olds sweep the cathedral steps until kissed by a virgin; custom from about 1890", "url": "https://www.thelocal.de/20231025/10-things-you-never-knew-about-the-german-state-of-bremen" },
+        { "fact": "Domshof north of the Dom; Neptunbrunnen 1991; coordinates", "url": "https://de.wikipedia.org/wiki/Domshof" },
+        { "fact": "Bremer Loch: coin slot in a bronze lid at the corner of the Haus der Bürgerschaft facing the Dom, since 27 July 2007; plays the Town Musicians' animal sounds; donations go to the Wilhelm-Kaisen-Bürgerhilfe", "url": "https://de.wikipedia.org/wiki/Bremer_Marktplatz" }
+      ]
+    }
+  ],
+  "checks_of_existing_app_texts": [
+    { "text": "Grimm fairy tale, 1819. Bronze statue by Gerhard Marcks (1953), right next to the Town Hall — a UNESCO World Heritage Site with the Roland since 2004.", "result": "correct", "sources": ["https://de.wikipedia.org/wiki/Die_Bremer_Stadtmusikanten", "https://de.wikipedia.org/wiki/Die_Bremer_Stadtmusikanten_(Skulptur)", "https://de.wikipedia.org/wiki/Bremer_Rathaus"] },
+    { "text": "“Schnoor” means string in Low German: the tiny houses stand in a row like pearls on a string. Many date from the 15th to the 18th century.", "result": "correct", "note": "bremen.eu uses the 'pearls on a string' picture; Wikipedia explains the name with the old ship crafts (cord). Oldest house 1401, many houses from the 17th and 18th century.", "sources": ["https://www.bremen.eu/tourism/sights/schnoor-quarter", "https://de.wikipedia.org/wiki/Schnoor"] },
+    { "text": "Parts of the cathedral date back to the 11th century. Don't miss the Bleikeller, a cellar with mummified bodies.", "result": "correct", "sources": ["https://de.wikipedia.org/wiki/Bremer_Dom", "https://en.wikipedia.org/wiki/Bremen_Cathedral"] },
+    { "text": "For centuries, ships unloaded their goods here. Today the quay is lined with restaurants and old ships, and it is lively on summer evenings.", "result": "correct", "note": "'lively on summer evenings' is an opinion, not a fact.", "sources": ["https://de.wikipedia.org/wiki/Schlachte_(Bremen)"] },
+    { "text": "Statue height 'about 2 m'; address 'Schoppensteel, west side of the Rathaus'.", "result": "correct", "sources": ["https://www.bremen.eu/tourism/attractions/bremen-town-musicians", "https://de.wikipedia.org/wiki/Die_Bremer_Stadtmusikanten_(Skulptur)"] }
+  ],
+  "open_points": [
+    "The photos were chosen from the title, description, location and tags on each Unsplash page. Nobody has looked at them yet: open each 'page' link once and replace any photo you do not like.",
+    "No coordinates were found for St. Martini and the Bremer Loch, so these two cards show 'At the Schlachte' and 'Finale' instead of a distance.",
+    "Opening times and prices change: the texts say 'check' instead of giving numbers."
+  ]
+}

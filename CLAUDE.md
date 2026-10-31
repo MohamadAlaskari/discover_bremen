@@ -37,6 +37,12 @@ File: https://www.figma.com/design/pQQJCUzJe2lxfHn35z2pEU/Discover-Bremen----FLU
 | | St. Petri Cathedral | 19:1119 / 19:1197 |
 | Screens — end | Band complete | 18:666 |
 | Screens — Bremer Loch concert | 6 steps | 48:1248, 49:1339, 49:1375, 49:1411, 49:1447, 49:1483 |
+| Screens — Read more (sheet down / sheet up) | Town Musicians | 95:1856 / 102:1938 |
+| | Schlachte | 102:1998 / 102:2130 |
+| | Schnoor | 102:2190 / 102:2322 |
+| | St. Petri Cathedral | 102:2382 / 102:2514 |
+| Components — Place story | Text Link, Photo Slide, Info Row, Nearby Card | 93:138, 93:142, 93:150, 93:156 |
+| Icons added for Nearby cards | church, museum, account-balance, shield | 116:140, 116:144, 116:148, 116:152 |
 
 Variables: collections **Primitives**, **Color**, **Dimensions**, **Motion**, **Sound**. Variable descriptions name the Dart constant (e.g. "Flutter: AppColors.night").
 
@@ -44,6 +50,8 @@ How to read Figma:
 - Use `get_variable_defs`, then `get_design_context` and `get_screenshot` per screen.
 - Copy all texts from Figma. Do not invent facts.
 - The prototype flows "1 · Full flow", "2 · Route only" and "3 · Bremer Loch concert" show the intended behaviour.
+- In the prototype, the "Read more" link on each details screen opens that place's story. Drag the sheet (or tap the grip) to see the "sheet up" frame.
+- Figma shows tinted placeholders with a caption where the photos go. The real photo URLs are in `docs/place_stories.json`.
 
 ## 3. Concept
 "The Fifth Musician":
@@ -58,7 +66,8 @@ How to read Figma:
 
 ## 4. Technical rules
 - Flutter stable, Material 3, null safety.
-- Only one extra package: `audioplayers`. No images from the internet, no other packages.
+- Only one extra package: `audioplayers`. No other packages (no `cached_network_image`, no `url_launcher`).
+- Images from the internet: only the photos on the Read-more screens, with `Image.network` (see section 5). Everything else is drawn with widgets, icons and emoji.
 - Typography and icons:
   - Font: Roboto (Flutter default).
   - Icons: Material Icons only.
@@ -72,14 +81,17 @@ How to read Figma:
 lib/
   main.dart                      MaterialApp, theme, SoundService.instance.init()
   theme/  app_colors.dart  app_text.dart  app_motion.dart
-  models/ place.dart  app_sound.dart
+  models/ place.dart  app_sound.dart  place_story.dart
   data/   places.dart            the 4 stops (texts from Figma)
+          place_stories.dart     Read-more content (from docs/place_stories.json)
   services/ sound_service.dart   audioplayers version
   screens/ onboarding_screen.dart  home_screen.dart  place_details_screen.dart
-           band_complete_screen.dart  concert_screen.dart
+           place_story_screen.dart  band_complete_screen.dart  concert_screen.dart
   widgets/ band_card.dart  musician_tower.dart  route_stop_tile.dart  visited_stamp.dart
-           voice_bubble.dart  bremer_loch.dart  local_tip_card.dart  (+ small ones if needed)
+           voice_bubble.dart  bremer_loch.dart  local_tip_card.dart
+           photo_carousel.dart  info_row.dart  nearby_card.dart  (+ small ones if needed)
 assets/sounds/                   11 mp3 + SOUNDS.txt (from discover-bremen-sounds.zip)
+docs/place_stories.json          Read-more texts, photo URLs, credits and sources (input, not compiled)
 ```
   - One public widget per file. Private `_Widgets` only when used once.
   - Short English comments that explain *why*: code organisation is 15 % of the grade.
@@ -111,6 +123,33 @@ assets/sounds/                   11 mp3 + SOUNDS.txt (from discover-bremen-sound
 - After marking: the "Visited today" chip appears and the bottom button changes to "Back to your route".
 - `Navigator.pop(context, _visited)`. Guard every `setState` after an await with `if (!mounted) return;`.
 
+**Read more (place story)** — Figma section "08 · Read more — place story" (95:1855)
+- Entry: the "Read more" `TextButton` in the About header of `PlaceDetailsScreen` → `Navigator.push(PlaceStoryScreen(place: place))`. The back arrow pops. This screen does not change the visited state.
+- Layout: `Scaffold` → `LayoutBuilder` → `Stack` with three layers:
+  1. `PhotoCarousel`, 360 px high, fixed at the top. It does not move while the text scrolls.
+     - `PageView.builder` over the 3 photos. `Image.network(url, fit: BoxFit.cover, semanticLabel: caption)`.
+     - `loadingBuilder` and `errorBuilder`: a box in the animal's soft colour with `Icons.image` and the caption. The screen must still look complete offline.
+     - Bottom scrim gradient, credit text bottom left ("Photo: <author> / Unsplash"), `PageDots` (reuse the onboarding dots) at y = 278.
+  2. `DraggableScrollableSheet` (h = screen height):
+     - starts 30 px above the photo bottom: `initialChildSize = minChildSize = (h - 330) / h`
+     - drags up to just below the back button: `maxChildSize = (h - 104) / h`, `snap: true`
+     - builder: `DecoratedBox` (surface colour, top radius `AppRadius.xl`, soft shadow) + `ListView(controller: scrollController)`, padding 12 / 24 / 32, gap 20
+     - order: grip → stop label (animal colour) + name + 3 chips → About → The story → Local tradition (`LocalTipCard`) → Location & visit (3 × `InfoRow`: Address, Price, Access) → Nearby sights (3 × `NearbyCard`) → Photo credits
+  3. Back button (`IconButton`, style Surface) at (16, 48) inside `SafeArea`, above the sheet.
+- `NearbyCard`:
+  - thumb 72 × 72: route stops show the `AnimalBadge` on that animal's soft colour; the Bremer Loch shows the coin; other sights show a Material icon (`Icons.account_balance`, `Icons.shield`, `Icons.church`, `Icons.museum`, `Icons.music_note`, `Icons.place`)
+  - chip: a distance ("≈ 50 m", Neutral tone) or route info ("Stop 2 · ≈ 350 m", "Finale", Brand tone)
+  - not tappable (keeps navigation simple)
+- `InfoRow` and `NearbyCard` grow with their text (two-line addresses must not overlap).
+- Data:
+  - Generate `lib/models/place_story.dart` (`PlaceStory`, `StoryPhoto`, `NearbySight`, `StoryChip`) and `lib/data/place_stories.dart` (a `const Map<int, PlaceStory>` keyed by place id) from `docs/place_stories.json`.
+  - If the file is not in `docs/`, look next to this CLAUDE.md or in the parent folder.
+  - Copy the texts exactly. Put `// TODO(Mohamad): rewrite in your own words` above each place.
+- Photos:
+  - Hotlinked from images.unsplash.com. Unsplash License: free to use, attribution not required; we still show the credits on each slide and in "Photo credits".
+  - images.unsplash.com sends CORS headers, so the photos also load in Chrome. If one fails on web, read the console; the errorBuilder keeps the layout intact.
+  - Lib-only submission: nothing extra needed (no assets, no package).
+
 **Concert (Bremer Loch)**
 - Night theme: `AppColors.night`.
 - Tap the coin → it slides into the slot (500 ms, `Curves.easeIn`) + `play(AppSound.coin)` + `mediumImpact`.
@@ -127,6 +166,7 @@ assets/sounds/                   11 mp3 + SOUNDS.txt (from discover-bremen-sound
 ## 6. Content
 - Texts (titles, descriptions, chips, About, local tips) come from the Figma details frames.
 - The 4 local tips and the short descriptions are placeholders. Mohamad must rewrite them in his own words. Mark each one with `// TODO(Mohamad): rewrite in your own words`.
+- Read-more texts (about, story, tradition, visit, nearby) come from `docs/place_stories.json`. They were checked against the sources listed there, but they are drafts too: same TODO marker.
 
 ## 7. How to work
 1. Read the Figma file (Handoff first, then Foundations, then the screens). Post a short plan: files and order, max 15 lines. Then implement without waiting.
@@ -144,6 +184,7 @@ assets/sounds/                   11 mp3 + SOUNDS.txt (from discover-bremen-sound
 - [ ] Hear your band plays band_1…band_4 by count; mute switch silences everything; the app is fully usable with sound off.
 - [ ] Band complete after 4 stops → Bremer Loch concert works end to end; New journey resets.
 - [ ] Hero animation list → details; no layout overflow on small and large screens.
+- [ ] Read more: every details screen opens its story; photos swipe; the sheet slides up over the fixed photo; all sections from Figma; credits visible; offline shows placeholders instead of errors.
 - [ ] Code: one widget per file, tokens instead of magic numbers, comments, `flutter analyze` with 0 issues.
 - [ ] README + both submission zips created.
 
