@@ -36,7 +36,7 @@ the photos, and pull the story sheet up.
 | File | Contains | How to run |
 |---|---|---|
 | `lib.zip` | `lib/` only | `flutter create discover_bremen`, replace its `lib/` folder with this one, then `flutter run`. No extra package is needed: sounds play as a short system click. |
-| `lib_pubspec_assets.zip` | `lib/`, `pubspec.yaml`, `assets/`, this README | `flutter create discover_bremen`, replace `lib/` and `pubspec.yaml`, add `assets/`, then `flutter pub get` and `flutter run`. This version plays the real sounds. |
+| `lib_pubspec_assets.zip` | `lib/`, `pubspec.yaml`, `assets/`, this README | `flutter create discover_bremen`, replace `lib/` and `pubspec.yaml`, add `assets/`, then `flutter pub get` and `flutter run`. This version plays the real sounds. Run `dart run flutter_launcher_icons` once to get the app icon too. |
 
 `lib/` uses relative imports only, so it works in a project with any name.
 The photos on the Read-more screens come from the internet; without a
@@ -111,6 +111,7 @@ lib/
     deco_note.dart  dashed_line.dart  page_dots.dart  coin.dart
     photo_carousel.dart  info_row.dart  nearby_card.dart
 assets/sounds/                  11 mp3 + SOUNDS.txt
+assets/icon/                    launcher icon from Figma: full, background, foreground (1024 px)
 docs/
   place_stories.json            Read-more texts, photo URLs, credits, sources (input, not compiled)
   sound_service_lib_only.dart   SoundService without packages (used in lib.zip)
@@ -199,7 +200,8 @@ additive voices, synthetic reverb). They use no third-party samples or
 recordings. See `assets/sounds/SOUNDS.txt` for the list.
 
 `lib/services/sound_service.dart` plays them with the `audioplayers` package,
-the only extra package:
+the only extra package in the app (`flutter_launcher_icons` is only a build
+tool, see below):
 
 - three players: effects (low latency), voices and music
 - iOS ambient audio session: the silent switch mutes the app
@@ -213,3 +215,23 @@ It has the same public API, so no screen changes: sounds become the system
 click, and haptics, stamp, voice bubbles and tower stay. `lib.zip` contains
 this version, so it runs in a fresh Flutter project without `audioplayers`.
 Both versions pass `flutter analyze` (0 issues) and all tests.
+
+## App icon
+
+The launcher icon is designed in Figma on the page *App Icon*: the
+components `App Icon/Background` (brand red with two soft circles, as in the
+place hero) and `App Icon/Foreground` (the donkey `Animal Badge`), both
+built from the file's colour variables. They are exported at 1024 px to
+`assets/icon/`.
+
+`flutter_launcher_icons` (a dev dependency, configured in `pubspec.yaml`)
+turns them into the Android icons (classic and adaptive), the iOS app icon
+set and the web icons and favicon:
+
+```bash
+dart run flutter_launcher_icons
+```
+
+The icon files live in `android/`, `ios/` and `web/`, so `lib.zip` cannot
+carry them; `lib_pubspec_assets.zip` contains `assets/icon/` and the
+configuration to create them.

@@ -3,7 +3,7 @@
     "short_name": "Fifth Musician",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#FBF6EC",
+    "background_color": "#C8232C",
     "theme_color": "#C8232C",
     "description": "Discover Bremen - a city walk through the fairy tale of the Bremen Town Musicians.",
     "orientation": "portrait-primary",
