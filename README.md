@@ -24,7 +24,7 @@ Dart 3.13). Older versions do not compile the code: the UNDO snackbar uses
 ```bash
 flutter pub get
 flutter run -d chrome        # or an Android emulator / phone
-flutter test                 # 20 widget tests
+flutter test                 # 22 widget tests
 flutter analyze              # must say: No issues found!
 ```
 

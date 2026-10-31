@@ -212,6 +212,21 @@ void main() {
       expect(find.text('Start my journey'), findsOneWidget);
     });
 
+    // 3 visits: stamps, tower with three animals and the play pill, but no
+    // jump to "Band complete" yet.
+    testWidgets('no overflow on $label: home with 0 to 3 visits', (
+      tester,
+    ) async {
+      useScreen(tester, size);
+      await tester.pumpWidget(app(const HomeScreen(userName: 'Anna')));
+      await tester.pumpAndSettle();
+      for (final place in places.take(3)) {
+        await visit(tester, place.shortName);
+      }
+      expect(find.text('3 of 4 musicians'), findsOneWidget);
+      expect(find.text('Hear your band'), findsOneWidget);
+    });
+
     testWidgets('no overflow on $label: details of every stop', (tester) async {
       useScreen(tester, size);
       for (final place in places) {
