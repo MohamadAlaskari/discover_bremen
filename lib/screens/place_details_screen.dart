@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../data/place_stories.dart';
 import '../data/places.dart';
 import '../models/animal.dart';
 import '../models/app_sound.dart';
@@ -19,6 +20,7 @@ import '../widgets/local_tip_card.dart';
 import '../widgets/round_icon_button.dart';
 import '../widgets/visited_stamp.dart';
 import '../widgets/voice_bubble.dart';
+import 'place_story_screen.dart';
 
 /// Details of one stop (Figma "Details · Schlachte" etc. and "… · visited").
 ///
@@ -108,6 +110,12 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
 
   /// Back to the list with the result.
   void _close() => Navigator.pop(context, _visited);
+
+  /// The place story only shows more content: nothing comes back from it.
+  void _openStory() => Navigator.push(
+    context,
+    MaterialPageRoute<void>(builder: (_) => PlaceStoryScreen(place: _place)),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -304,9 +312,32 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
               InfoChip(icon: Icons.schedule, label: facts.time),
             ],
           ),
-          const SizedBox(height: AppSpacing.md),
-          const Text('About', style: AppText.titleMedium),
-          const SizedBox(height: 6),
+          // The About header is 48 px high, the touch target of "Read more".
+          // The smaller gap above keeps "About" where Figma puts it.
+          const SizedBox(height: AppSpacing.xxs),
+          SizedBox(
+            height: AppSpacing.xxxl,
+            child: Row(
+              children: [
+                const Expanded(
+                  child: Text('About', style: AppText.titleMedium),
+                ),
+                if (placeStories.containsKey(place.id))
+                  // Figma "Text Link": brand text, chevron at the end.
+                  TextButton.icon(
+                    onPressed: _openStory,
+                    iconAlignment: IconAlignment.end,
+                    style: TextButton.styleFrom(
+                      minimumSize: const Size.square(AppSpacing.xxxl),
+                      padding: const EdgeInsets.only(left: AppSpacing.sm),
+                      iconSize: 18,
+                    ),
+                    icon: const Icon(Icons.chevron_right),
+                    label: const Text('Read more'),
+                  ),
+              ],
+            ),
+          ),
           Text(
             place.about,
             style: AppText.bodyMedium.copyWith(color: AppColors.textSecondary),
