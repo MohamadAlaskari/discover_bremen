@@ -247,8 +247,8 @@
         { "label": "Tower: 265 steps", "icon": "directions_walk" }
       ],
       "about": "Bremen’s Protestant cathedral, next to the Marktplatz. Its two west towers are about 93 m high, and 265 steps lead up the south tower.",
-      "story": "A church stood here from about 789. The oldest parts you can still see, the crypts, are from the 11th century. In the Bleikeller, eight mummified bodies lie in glass-topped coffins.",
-      "tradition": "Unmarried people who turn 30 sweep the cathedral steps while friends watch. They may stop when a “virgin” kisses them. The custom goes back to about 1890.",
+      "story": "A church stood here from about 789. The oldest parts you can still see, the crypts, are from the 11th century. In the Bleikeller, eight mummified bodies lie in coffins that you can look into.",
+      "tradition": "Unmarried men who turn 30 sweep the cathedral steps while friends watch. They may stop when a “virgin” kisses them. Unmarried women polish the door handles instead. The custom goes back to about 1890.",
       "visit": {
         "address": "Sandstraße 10–12, 28195 Bremen",
         "price": "Dom-Museum free. Tower and Bleikeller: check prices.",
@@ -305,10 +305,11 @@
       ],
       "sources": [
         { "fact": "Protestant (ev.-luth. Domgemeinde St. Petri); west towers about 93 m; south tower platform over 265 steps; crypts from the 11th century", "url": "https://de.wikipedia.org/wiki/Bremer_Dom" },
-        { "fact": "Church built about 789; eight mummies in glass-topped coffins in the Bleikeller; coordinates", "url": "https://en.wikipedia.org/wiki/Bremen_Cathedral" },
+        { "fact": "Church built about 789; eight mummies in the Bleikeller (this page says glass-topped coffins, de.wikipedia Bremer_Dom says open coffins, so the text does not say which); coordinates", "url": "https://en.wikipedia.org/wiki/Bremen_Cathedral" },
         { "fact": "Address Sandstraße 10-12, 28195 Bremen; opening times differ by season", "url": "https://www.stpetridom.de/englisch/" },
         { "fact": "Dom-Museum admission free; tower (265 steps) and Bleikeller are seasonal", "url": "https://dommuseum-bremen.de/en/besucherinfos" },
         { "fact": "Unmarried 30-year-olds sweep the cathedral steps until kissed by a virgin; custom from about 1890", "url": "https://www.thelocal.de/20231025/10-things-you-never-knew-about-the-german-state-of-bremen" },
+        { "fact": "Only unmarried men sweep (steps at the Dom's main entrance) until a 'Jungfrau' kisses them; unmarried women polish the cathedral door handles; first mentioned about 1890 (checked 31 Oct 2026)", "url": "https://de.wikipedia.org/wiki/Domtreppenfegen" },
         { "fact": "Domshof north of the Dom; Neptunbrunnen 1991; coordinates", "url": "https://de.wikipedia.org/wiki/Domshof" },
         { "fact": "Bremer Loch: coin slot in a bronze lid at the corner of the Haus der Bürgerschaft facing the Dom, since 27 July 2007; plays the Town Musicians' animal sounds; donations go to the Wilhelm-Kaisen-Bürgerhilfe", "url": "https://de.wikipedia.org/wiki/Bremer_Marktplatz" }
       ]

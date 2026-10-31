@@ -242,11 +242,12 @@ const stPetriStory = PlaceStory(
   story:
       'There has been a church here since about 789. The oldest parts you '
       'can still see are the crypts, from the 11th century. Down in the '
-      'Bleikeller, eight mummified bodies lie in coffins with glass lids.',
+      'Bleikeller, eight mummies lie in coffins that you can look into.',
   tradition:
-      'Unmarried people who turn 30 have to sweep the cathedral steps while '
-      'their friends watch. They can only stop when a “virgin” kisses them. '
-      'The custom goes back to about 1890.',
+      'On their 30th birthday, single men have to sweep the cathedral steps '
+      'while their friends watch. They may only stop when a “virgin” kisses '
+      'them. Single women polish the door handles instead. The custom goes '
+      'back to about 1890.',
   address: 'Sandstraße 10-12, 28195 Bremen',
   price: 'Dom-Museum free. Tower and Bleikeller: check prices.',
   access: 'Check opening times. Tower and Bleikeller are seasonal.',
