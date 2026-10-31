@@ -5,12 +5,11 @@ import 'package:flutter/foundation.dart';
 
 import '../models/app_sound.dart';
 
-/// Plays every sound of the app (version with the audioplayers package).
+/// Plays every sound of the app with the audioplayers package.
 ///
-/// Screens only talk to this class. docs/sound_service_lib_only.dart has the
-/// same public API without packages, so it can replace this file and no
-/// screen changes. Audio errors never reach the UI: every sound has a visual
-/// twin (stamp, voice bubble, tower), so the app works without sound too.
+/// Screens only talk to this class, so they never touch audioplayers. Audio
+/// errors never reach the UI: every sound has a visual twin (stamp, voice
+/// bubble, tower), so the app works without sound too.
 class SoundService {
   SoundService._();
 
