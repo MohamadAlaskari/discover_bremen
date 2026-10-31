@@ -85,6 +85,13 @@ class _PhotoCarouselState extends State<PhotoCarousel> {
             if (wasSynchronouslyLoaded) return child;
             return AnimatedSwitcher(
               duration: AppMotion.base,
+              // StackFit.expand: without it the switcher lets the image
+              // shrink to its own shape and BoxFit.cover cannot fill the
+              // slide (a portrait photo became a strip in the middle).
+              layoutBuilder: (current, previous) => Stack(
+                fit: StackFit.expand,
+                children: [...previous, ?current],
+              ),
               child: frame == null ? _placeholder(photo) : child,
             );
           },
