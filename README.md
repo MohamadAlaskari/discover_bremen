@@ -17,14 +17,19 @@ coin into the real *Bremer Loch* and the band plays for you.
 
 ## Run it
 
-Needs Flutter stable (built and tested with Flutter 3.47.7 / Dart 3.13).
+Needs **Flutter 3.38 or newer** (built and tested with Flutter 3.47.7 /
+Dart 3.13). Older versions do not compile the code: the UNDO snackbar uses
+`SnackBar(persist: false)`, which came with Flutter 3.38.
 
 ```bash
 flutter pub get
 flutter run -d chrome        # or an Android emulator / phone
-flutter test                 # 13 widget tests
+flutter test                 # 20 widget tests
 flutter analyze              # must say: No issues found!
 ```
+
+In Chrome you can drag with the mouse like a finger: swipe the onboarding
+and the photos, pull the story sheet up (`AppScrollBehavior`).
 
 On Windows, the project path contains spaces. Web and tests work. If an
 Android build ever fails because of the path, move the project to
@@ -38,8 +43,12 @@ Android build ever fails because of the path, move the project to
    pops up and a snackbar offers **UNDO**. Then tap **Back to your route**.
    The stop now shows the stamp, a green trail and ✅, and the animal stands
    in the Musician Tower.
-4. **Hear your band:** plays the band song with one instrument per freed animal.
-5. After 4 stops: **Band complete** (certificate with your name) →
+4. **Read more:** on a details screen, tap **Read more** next to *About*.
+   Swipe the three photos, then pull the text sheet up over the photo (or
+   tap its grip). The back arrow returns to the details screen; reading does
+   not change the visited state.
+5. **Hear your band:** plays the band song with one instrument per freed animal.
+6. After 4 stops: **Band complete** (certificate with your name) →
    **Drop a coin at the Bremer Loch** → tap the coin → concert.
    **New journey** starts again with 0 stops.
 
@@ -63,9 +72,11 @@ lib/
   main.dart                     MaterialApp, theme, SoundService.instance.init()
   data/
     places.dart                 the 4 stops (texts from Figma)
+    place_stories.dart          Read-more content per stop (from docs/place_stories.json)
     app_strings.dart            AppStrings.appName = 'The Fifth Musician', tagline, author
   models/
     place.dart                  Place + PlaceFacts
+    place_story.dart            PlaceStory, StoryChip, StoryPhoto, NearbySight
     animal.dart                 the 4 musicians: emoji, colours, call, instrument, voice, haptic
     app_sound.dart              AppSound enum (= Figma "Sound" variables)
   services/
@@ -77,20 +88,27 @@ lib/
     app_spacing.dart            AppSpacing, AppRadius (Figma "Dimensions")
     app_shadows.dart            AppShadows  (Elevation/1, Elevation/2)
     app_theme.dart              Material 3 theme built from the tokens
+    app_scroll_behavior.dart    AppScrollBehavior: mouse drags scroll too (Chrome)
   screens/
     onboarding_screen.dart      3 pages + name
     home_screen.dart            StatefulWidget, ListView.builder, owns the visited set
-    place_details_screen.dart   stamp, voice bubble, SnackBar with UNDO
+    place_details_screen.dart   stamp, voice bubble, SnackBar with UNDO, Read more link
+    place_story_screen.dart     Read more: fixed photos + text sheet that slides up
     band_complete_screen.dart   certificate + confetti
     concert_screen.dart         Bremer Loch: coin → band plays
   widgets/                      one public widget per file
     band_card.dart  musician_tower.dart  tower_slot.dart  route_stop_tile.dart
     visited_stamp.dart  voice_bubble.dart  bremer_loch.dart  local_tip_card.dart
     animal_badge.dart  info_chip.dart  sound_toggle.dart  round_icon_button.dart
-    deco_note.dart  dashed_line.dart
+    deco_note.dart  dashed_line.dart  page_dots.dart  coin.dart
+    photo_carousel.dart  info_row.dart  nearby_card.dart
 assets/sounds/                  11 mp3 + SOUNDS.txt
-docs/sound_service_lib_only.dart  SoundService without packages (see below)
-test/                           widget tests (flows + layout on small and large phones)
+docs/
+  place_stories.json            Read-more texts, photo URLs, credits, sources (input, not compiled)
+  sound_service_lib_only.dart   SoundService without packages (see below)
+test/
+  app_test.dart                 flows + layout on small and large phones
+  place_story_test.dart         Read more: every story, swipe, sheet, sections, offline
 ```
 
 ## Design → code
@@ -117,8 +135,13 @@ The code uses the same names as the design file:
 | Snackbar | `SnackBar` + `SnackBarAction('UNDO')` (theme in `app_theme.dart`) |
 | Button (Primary, Visited, OnBrand, Text) | `FilledButton` / `OutlinedButton` / `TextButton` (theme) |
 | Icon Button (Surface, Ghost, OnBrand) | `RoundIconButton` |
-| Page Dots · Text Field | `_PageDots` · `TextField` in `onboarding_screen.dart` |
-| Coin · Bremer Loch | `_Coin` in `concert_screen.dart` · `BremerLoch` |
+| Page Dots · Text Field | `PageDots` (onboarding and photos) · `TextField` in `onboarding_screen.dart` |
+| Coin · Bremer Loch | `Coin` · `BremerLoch` |
+| Text Link ("Read more") | `TextButton.icon` in the About header of `place_details_screen.dart` |
+| Photo Slide | `PhotoCarousel` (`PageView.builder` + `Image.network`) |
+| Read-more sheet | `DraggableScrollableSheet` in `place_story_screen.dart` |
+| Info Row · Nearby Card | `InfoRow` · `NearbyCard` |
+| Local tradition | `LocalTipCard(title: 'Local tradition')` |
 
 **Mark as Visited** follows the Flutter Handoff sequence:
 
@@ -132,6 +155,33 @@ The code uses the same names as the design file:
 A note on the stamp angle: Figma counts rotation counter-clockwise, Flutter
 clockwise. Figma's "−12°" is therefore `+12°` in Flutter
 (`visited_stamp.dart`), which matches the Figma frames.
+
+## Read more (place story)
+
+Figma section "08 · Read more — place story". `PlaceStoryScreen` is a
+`Stack` with three layers:
+
+1. **Photos** (`PhotoCarousel`, 360 px, fixed at the top): three photos per
+   stop in a `PageView.builder`, with the photographer's credit on each slide
+   and page dots.
+2. **Text sheet** (`DraggableScrollableSheet`, `snap: true`): it starts 30 px
+   above the bottom of the photo and slides up to just below the back button.
+   Its `ListView` uses the sheet's scroll controller, so one drag first pulls
+   the sheet up and then scrolls the text. Tapping the grip opens or closes it.
+   Order: title and chips → About → The story → Local tradition →
+   Location & visit → Nearby sights → Photo credits.
+3. **Back button** above both.
+
+The texts come from `docs/place_stories.json` (checked against the sources
+listed there) and live in `lib/data/place_stories.dart`. The sheet uses the
+cream canvas colour, as in the Figma frames.
+
+**Photos:** loaded from `images.unsplash.com` with `Image.network`, so they
+need no assets and no extra package (they work in both zips). Unsplash
+License: free to use, credit not required; the app shows the credits anyway,
+on each slide and under *Photo credits*. While a photo loads, or without
+internet, a placeholder in the animal's colour shows an image icon and the
+caption, so the screen always looks complete.
 
 ## Sounds
 
@@ -184,7 +234,13 @@ Both versions were checked with `flutter analyze` (0 issues) and all tests.
 - [ ] Rewrite the 4 **short descriptions** and 4 **local tips** in your own
       words. They are marked `// TODO(Mohamad): rewrite in your own words` in
       `lib/data/places.dart`.
+- [ ] Rewrite the **Read-more texts** (about, story, tradition, nearby lines)
+      in your own words: 4 more TODO markers in `lib/data/place_stories.dart`.
+- [ ] Look at the 12 **photos** once (open each Unsplash page link in
+      `docs/place_stories.json`) and replace any you do not like.
 - [ ] Check every fact you keep (dates, names) once more.
+- [ ] Ask the lecturer which Flutter version they use: the code needs 3.38
+      or newer.
 - [ ] Test once with the sound off: stamp, voice bubble and tower must still
       tell the story.
 - [ ] Pick the zip (see above) and upload it with the Google Form before
