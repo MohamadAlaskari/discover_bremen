@@ -6,14 +6,30 @@ import '../theme/app_motion.dart';
 /// Figma "Page Dots": white dots, the active page is a wide pill. Used on
 /// the brand-red onboarding and over the photos of the Read-more screen.
 class PageDots extends StatelessWidget {
-  const PageDots({super.key, required this.page, required this.count});
+  const PageDots({
+    super.key,
+    required this.page,
+    required this.count,
+    this.overPhoto = false,
+  });
 
   final int page;
   final int count;
 
+  /// Over a photo the dots get a dark halo, so they stay visible on bright
+  /// pictures too (Figma only shows tinted placeholders there).
+  final bool overPhoto;
+
   static const _dot = 8.0;
   static const _activeWidth = 22.0;
   static const _gap = 6.0;
+  static final _halo = [
+    BoxShadow(
+      color: AppColors.night.withValues(alpha: 0.7),
+      blurRadius: 2,
+      spreadRadius: 0.5,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +49,7 @@ class PageDots extends StatelessWidget {
               decoration: BoxDecoration(
                 color: i == page ? AppColors.surface : AppColors.onBrandMuted,
                 borderRadius: BorderRadius.circular(_dot / 2),
+                boxShadow: overPhoto ? _halo : null,
               ),
             ),
           ],

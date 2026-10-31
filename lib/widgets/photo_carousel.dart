@@ -62,7 +62,11 @@ class _PhotoCarouselState extends State<PhotoCarousel> {
             left: 0,
             right: 0,
             child: Center(
-              child: PageDots(page: _page, count: widget.photos.length),
+              child: PageDots(
+                page: _page,
+                count: widget.photos.length,
+                overPhoto: true,
+              ),
             ),
           ),
         ],
