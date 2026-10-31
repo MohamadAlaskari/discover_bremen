@@ -1,7 +1,8 @@
 # Builds the submission zip. Run it from anywhere:
 #   powershell -ExecutionPolicy Bypass -File tool\make_submission.ps1
 #
-# submission\lib_pubspec_assets.zip  lib/ + pubspec.yaml + assets/ + README.md
+# submission\lib_pubspec_assets.zip  lib/ + pubspec.yaml + assets/ +
+#                                    screenshots/ + README.md
 #                                    (the README says how to run it)
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path -Parent $PSScriptRoot)
@@ -36,6 +37,6 @@ function New-Zip([string]$zipPath, [string]$base, [string[]]$items) {
 }
 
 New-Zip "$root\submission\lib_pubspec_assets.zip" $root `
-  @('lib', 'pubspec.yaml', 'assets', 'README.md')
+  @('lib', 'pubspec.yaml', 'assets', 'screenshots', 'README.md')
 
 Get-ChildItem submission\*.zip | Format-Table Name, Length

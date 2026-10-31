@@ -15,13 +15,38 @@ coin into the real *Bremer Loch* and the band plays for you.
 | 3 | Schnoor Quarter (Altstadt) | 🐱 Cat | night music |
 | 4 | St. Petri Cathedral (Domshof) | 🐓 Rooster | a good voice |
 
+## Links
+
+- **GitHub:** https://github.com/MohamadAlaskari/discover_bremen
+- **Figma design:** [Discover Bremen — FLUTTER ASSIGNMENT](https://www.figma.com/design/pQQJCUzJe2lxfHn35z2pEU/Discover-Bremen----FLUTTER-ASSIGNMENT)
+
+## Screenshots
+
+Taken on an Android emulator (Pixel-sized phone, Android 16).
+
+<table>
+  <tr>
+    <td align="center"><img src="screenshots/01_onboarding.png" width="200" alt="Onboarding: four animals set off for Bremen"><br>Onboarding</td>
+    <td align="center"><img src="screenshots/02_home.png" width="200" alt="Home: the route with 4 stops"><br>Home: your route</td>
+    <td align="center"><img src="screenshots/03_details.png" width="200" alt="Details of stop 1 with the Mark as Visited button"><br>Details</td>
+    <td align="center"><img src="screenshots/04_visited.png" width="200" alt="After Mark as Visited: stamp, voice bubble and UNDO snackbar"><br>Mark as Visited</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/05_read_more.png" width="200" alt="Read more: photo of the statue and the story"><br>Read more</td>
+    <td align="center"><img src="screenshots/06_home_visited.png" width="200" alt="Home after the visit: stop 1 stamped and checked"><br>Back on Home: visited ✅</td>
+    <td align="center"><img src="screenshots/07_band_complete.png" width="200" alt="Band complete: certificate with the user's name"><br>Band complete</td>
+    <td align="center"><img src="screenshots/08_concert.png" width="200" alt="Concert at the Bremer Loch"><br>Concert</td>
+  </tr>
+</table>
+
 ## Run it
 
 Needs **Flutter 3.38 or newer** (built and tested with Flutter 3.47.7 /
 Dart 3.13). The UNDO snackbar uses `SnackBar(persist: false)`, which came
 with Flutter 3.38.
 
-The zip holds `lib/`, `pubspec.yaml`, `assets/` and this README. To run it:
+The zip holds `lib/`, `pubspec.yaml`, `assets/`, `screenshots/` and this
+README. To run it:
 
 1. `flutter create discover_bremen`
 2. Replace the new project's `lib/` and `pubspec.yaml` with the ones from
@@ -111,6 +136,7 @@ lib/
     photo_carousel.dart  info_row.dart  nearby_card.dart
 assets/sounds/                  11 mp3 + SOUNDS.txt
 assets/icon/                    launcher icon from Figma: full, background, foreground (1024 px)
+screenshots/                    8 app screenshots for this README
 docs/
   place_stories.json            Read-more texts, photo URLs, credits, sources (input, not compiled)
 tool/
