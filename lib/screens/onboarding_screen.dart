@@ -13,6 +13,7 @@ import '../widgets/dashed_line.dart';
 import '../widgets/deco_note.dart';
 import '../widgets/info_chip.dart';
 import '../widgets/musician_tower.dart';
+import '../widgets/page_dots.dart';
 import '../widgets/tower_slot.dart';
 import 'home_screen.dart';
 
@@ -114,7 +115,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _PageDots(page: _page, count: _pageCount),
+                    PageDots(page: _page, count: _pageCount),
                     const SizedBox(width: AppSpacing.md),
                     Flexible(
                       child: FilledButton.icon(
@@ -425,40 +426,6 @@ class _YouOnTop extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// Figma "Page Dots": the active page is a wide pill.
-class _PageDots extends StatelessWidget {
-  const _PageDots({required this.page, required this.count});
-
-  final int page;
-  final int count;
-
-  @override
-  Widget build(BuildContext context) {
-    return Semantics(
-      label: 'Page ${page + 1} of $count',
-      excludeSemantics: true,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (var i = 0; i < count; i++) ...[
-            if (i > 0) const SizedBox(width: 6),
-            AnimatedContainer(
-              duration: AppMotion.base,
-              curve: AppMotion.standard,
-              width: i == page ? 22 : 8,
-              height: 8,
-              decoration: BoxDecoration(
-                color: i == page ? AppColors.surface : AppColors.onBrandMuted,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
-          ],
-        ],
-      ),
     );
   }
 }

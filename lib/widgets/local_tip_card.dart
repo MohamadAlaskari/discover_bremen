@@ -5,12 +5,17 @@ import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text.dart';
 
-/// A personal tip on the details screen (Figma "Local Tip Card"):
-/// Card(color: AppColors.note) with Icons.lightbulb.
+/// A personal tip (Figma "Local Tip Card"): Card(color: AppColors.note)
+/// with Icons.lightbulb. The Read-more screen reuses it as "Local tradition".
 class LocalTipCard extends StatelessWidget {
-  const LocalTipCard({super.key, required this.tip});
+  const LocalTipCard({
+    super.key,
+    required this.tip,
+    this.title = 'Local tip from ${AppStrings.authorFirstName}',
+  });
 
   final String tip;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +32,15 @@ class LocalTipCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               children: [
-                Icon(Icons.lightbulb, size: 20, color: AppColors.iconNote),
-                SizedBox(width: AppSpacing.xs),
-                Expanded(
-                  child: Text(
-                    'Local tip from ${AppStrings.authorFirstName}',
-                    style: AppText.labelLarge,
-                  ),
+                const Icon(
+                  Icons.lightbulb,
+                  size: 20,
+                  color: AppColors.iconNote,
                 ),
+                const SizedBox(width: AppSpacing.xs),
+                Expanded(child: Text(title, style: AppText.labelLarge)),
               ],
             ),
             const SizedBox(height: AppSpacing.xs),

@@ -5,10 +5,11 @@ import '../theme/app_spacing.dart';
 import '../theme/app_text.dart';
 
 /// Colour set of an [InfoChip] (Figma "Chip" tones).
-enum ChipTone { neutral, success, onBrand }
+enum ChipTone { neutral, brand, success, onBrand }
 
 /// Small pill with an icon and a label (Figma "Chip"): the facts on the
-/// details screen, "Visited today", "To Bremen" and "Tap the coin".
+/// details and Read-more screens, "Visited today", the distances of nearby
+/// sights, "To Bremen" and "Tap the coin".
 class InfoChip extends StatelessWidget {
   const InfoChip({
     super.key,
@@ -24,10 +25,18 @@ class InfoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (background, iconColor, textColor) = switch (tone) {
+      // As in Figma, the location pin keeps its ink colour; the other icons
+      // are as soft as the text.
       ChipTone.neutral => (
         AppColors.surface,
-        AppColors.textPrimary,
+        icon == Icons.place ? AppColors.textPrimary : AppColors.textSecondary,
         AppColors.textSecondary,
+      ),
+      // Route info ("Stop 2 · ≈ 350 m", "Finale").
+      ChipTone.brand => (
+        AppColors.brandSubtle,
+        AppColors.brand,
+        AppColors.brand,
       ),
       ChipTone.success => (
         AppColors.successSubtle,

@@ -9,6 +9,7 @@ import '../theme/app_motion.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text.dart';
 import '../widgets/bremer_loch.dart';
+import '../widgets/coin.dart';
 import '../widgets/info_chip.dart';
 import '../widgets/musician_tower.dart';
 import '../widgets/round_icon_button.dart';
@@ -272,7 +273,7 @@ class _ConcertScreenState extends State<ConcertScreen>
                   opacity: idle ? 1 : 0,
                   duration: AppMotion.slow,
                   curve: const Interval(0.7, 1),
-                  child: const FittedBox(child: _Coin()),
+                  child: const FittedBox(child: Coin()),
                 ),
               ),
               Positioned(
@@ -507,85 +508,6 @@ class _PulseRingState extends State<_PulseRing>
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// The euro coin (Figma "Coin", 56 px): rim, gold face, ring, € and shine.
-class _Coin extends StatelessWidget {
-  const _Coin();
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox.square(
-      dimension: 56,
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.coinEdge,
-              ),
-            ),
-          ),
-          Positioned.fill(
-            left: 3,
-            top: 3,
-            right: 3,
-            bottom: 3,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.coin,
-              ),
-            ),
-          ),
-          Positioned.fill(
-            left: 8,
-            top: 8,
-            right: 8,
-            bottom: 8,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.fromBorderSide(
-                  BorderSide(color: AppColors.coinEdge, width: 1.5),
-                ),
-              ),
-            ),
-          ),
-          Center(
-            child: Text(
-              '€',
-              style: TextStyle(
-                fontSize: 24,
-                height: 1,
-                fontWeight: FontWeight.w900,
-                color: AppColors.coinEdge,
-              ),
-            ),
-          ),
-          // Light reflection on the top left.
-          Positioned(
-            left: 10,
-            top: 10,
-            child: RotationTransition(
-              turns: AlwaysStoppedAnimation(20 / 360),
-              child: SizedBox(
-                width: 16,
-                height: 8,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: AppColors.onBrandFaded,
-                    borderRadius: BorderRadius.all(Radius.elliptical(8, 4)),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
