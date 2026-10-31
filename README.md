@@ -71,7 +71,7 @@ voice bubble, tower), so the app is fully usable with the sound off.
 lib/
   main.dart                     MaterialApp, theme, SoundService.instance.init()
   data/
-    places.dart                 the 4 stops (texts from Figma)
+    places.dart                 the 4 stops (names and About texts from Figma)
     place_stories.dart          Read-more content per stop (from docs/place_stories.json)
     app_strings.dart            AppStrings.appName = 'The Fifth Musician', tagline, author
   models/
@@ -172,8 +172,8 @@ Figma section "08 · Read more — place story". `PlaceStoryScreen` is a
    Location & visit → Nearby sights → Photo credits.
 3. **Back button** above both.
 
-The texts come from `docs/place_stories.json` (checked against the sources
-listed there) and live in `lib/data/place_stories.dart`. The sheet uses the
+The facts come from `docs/place_stories.json`, which also lists the sources.
+The final wording is in `lib/data/place_stories.dart`. The sheet uses the
 cream canvas colour, as in the Figma frames.
 
 **Photos:** loaded from `images.unsplash.com` with `Image.network`, so they
@@ -231,11 +231,9 @@ Both versions were checked with `flutter analyze` (0 issues) and all tests.
 
 ## Before submitting (to do)
 
-- [ ] Rewrite the 4 **short descriptions** and 4 **local tips** in your own
-      words. They are marked `// TODO(Mohamad): rewrite in your own words` in
-      `lib/data/places.dart`.
-- [ ] Rewrite the **Read-more texts** (about, story, tradition, nearby lines)
-      in your own words: 4 more TODO markers in `lib/data/place_stories.dart`.
+- [ ] Read the texts once and change any word that does not sound like you:
+      descriptions and tips in `lib/data/places.dart`, Read-more texts in
+      `lib/data/place_stories.dart`.
 - [ ] Look at the 12 **photos** once (open each Unsplash page link in
       `docs/place_stories.json`) and replace any you do not like.
 - [ ] Check every fact you keep (dates, names) once more.

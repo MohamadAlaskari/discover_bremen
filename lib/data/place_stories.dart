@@ -5,12 +5,11 @@ import '../models/place_story.dart';
 
 /// The "Read more" content of every stop, keyed by place id.
 ///
-/// Generated from docs/place_stories.json. The texts were checked against
-/// the sources listed there (bremen.eu, Wikipedia, stpetridom.de, …), but
-/// they are drafts like the tips: rewrite them before submitting.
+/// The facts come from docs/place_stories.json, which lists the sources
+/// (bremen.eu, Wikipedia, stpetridom.de, …). The wording is rewritten in
+/// plain English; the facts are the same.
 /// Photos: Unsplash License, credits on each slide and under the text.
 const placeStories = <int, PlaceStory>{
-  // TODO(Mohamad): rewrite in your own words
   1: PlaceStory(
     chips: [
       StoryChip('Marktplatz', Icons.place),
@@ -18,17 +17,18 @@ const placeStories = <int, PlaceStory>{
       StoryChip('Open-air, any time', Icons.schedule),
     ],
     about:
-        'A bronze statue of the four animals from the Grimm tale, standing on '
-        'each other’s backs. It is about 2 m tall and stands at the west side '
-        'of the Town Hall.',
+        'A bronze statue of the four animals from the Grimm tale, stacked on '
+        'top of each other. It’s only about 2 m tall and stands on the west '
+        'side of the Town Hall.',
     story:
-        'The Brothers Grimm published the tale in 1819. The animals never '
-        'reach Bremen: they find a robbers’ house and stay there. Gerhard '
-        'Marcks made the statue. It was put up in 1953, first as a one-year '
-        'trial.',
+        'The Brothers Grimm published the tale in 1819. The funny part is that '
+        'the animals never reach Bremen. On the way they find a robbers’ house '
+        'and just stay there. Gerhard Marcks made the statue. It was put up in '
+        '1953, at first only as a one-year trial, and it’s still here.',
     tradition:
-        'Hold both front legs of the donkey and make a wish. Locals say that '
-        'one hand on one leg shows you are new in Bremen.',
+        'People hold the donkey’s front legs and make a wish. Take both legs, '
+        'though. Locals say that one hand on one leg shows everyone you’re new '
+        'in town.',
     address: 'Schoppensteel, west side of the Town Hall, 28195 Bremen',
     price: 'Free',
     access: 'Open-air, any time',
@@ -58,19 +58,21 @@ const placeStories = <int, PlaceStory>{
     nearby: [
       NearbySight(
         name: 'Bremer Rathaus',
-        line: 'Gothic town hall (1405–1410), UNESCO World Heritage since 2004.',
+        line:
+            'Gothic town hall, built from 1405 to 1410. UNESCO World Heritage '
+            'since 2004.',
         chip: '≈ 50 m',
         icon: Icons.account_balance,
       ),
       NearbySight(
         name: 'Bremer Roland',
-        line: 'Stone knight from 1404, a symbol of the city’s freedom.',
+        line: 'A stone knight from 1404. He stands for the city’s freedom.',
         chip: '≈ 50 m',
         icon: Icons.shield,
       ),
       NearbySight(
         name: 'Schlachte',
-        line: 'Next stop on your route: the promenade on the Weser.',
+        line: 'Your next stop: the promenade along the Weser.',
         chip: 'Stop 2 · ≈ 350 m',
         animal: Animal.dog,
         onRoute: true,
@@ -78,7 +80,6 @@ const placeStories = <int, PlaceStory>{
     ],
   ),
 
-  // TODO(Mohamad): rewrite in your own words
   2: PlaceStory(
     chips: [
       StoryChip('Weser', Icons.place),
@@ -86,16 +87,19 @@ const placeStories = <int, PlaceStory>{
       StoryChip('660 m promenade', Icons.directions_walk),
     ],
     about:
-        'A 660 m promenade on the Weser in the old town. Restaurants and bars '
-        'line the quay, next to old ships such as the Alexander von Humboldt.',
+        'A 660 m promenade along the Weser, right in the old town. Restaurants '
+        'and bars line the quay, with old ships like the Alexander von '
+        'Humboldt tied up next to them.',
     story:
-        'The name comes from Low German slagte: the posts driven into the '
-        'river bank. From the 13th century this was Bremen’s harbour. In the '
-        '19th century the railway and new port basins took over. From 1993 to '
-        '2000 the quay was rebuilt as a promenade.',
+        'The name comes from the Low German word slagte, the posts that were '
+        'driven into the river bank. From the 13th century on, this was '
+        'Bremen’s harbour. In the 19th century the railway and new port '
+        'basins took over. Between 1993 and 2000 the quay was rebuilt as a '
+        'promenade.',
     tradition:
-        'In winter the Schlachte-Zauber market fills the quay with about 100 '
-        'wooden huts and lit-up ships, from late November to December.',
+        'In winter the quay turns into the Schlachte-Zauber market, with about '
+        '100 wooden huts and ships covered in lights. It runs from late '
+        'November into December.',
     address: 'Schlachte, 28195 Bremen',
     price: 'Free',
     access: 'Open-air, any time',
@@ -125,19 +129,21 @@ const placeStories = <int, PlaceStory>{
     nearby: [
       NearbySight(
         name: 'St. Martini',
-        line: 'Brick Gothic church by the river, first named in 1229.',
+        line: 'A Brick Gothic church by the river, first mentioned in 1229.',
         chip: 'At the Schlachte',
         icon: Icons.church,
       ),
       NearbySight(
         name: 'Böttcherstraße',
-        line: '108 m of 1920s brick art, with a porcelain Glockenspiel.',
+        line:
+            'Only 108 m long, but full of 1920s brick art. Listen for the '
+            'porcelain Glockenspiel.',
         chip: '≈ 250 m',
         icon: Icons.music_note,
       ),
       NearbySight(
         name: 'Schnoor Quarter',
-        line: 'Next stop on your route: old lanes and tiny houses.',
+        line: 'Your next stop: old lanes and tiny houses.',
         chip: 'Stop 3 · ≈ 600 m',
         animal: Animal.cat,
         onRoute: true,
@@ -145,7 +151,6 @@ const placeStories = <int, PlaceStory>{
     ],
   ),
 
-  // TODO(Mohamad): rewrite in your own words
   3: PlaceStory(
     chips: [
       StoryChip('Altstadt', Icons.place),
@@ -153,17 +158,18 @@ const placeStories = <int, PlaceStory>{
       StoryChip('Houses from 1401', Icons.schedule),
     ],
     about:
-        'Bremen’s oldest quarter: narrow lanes with small houses, shops and '
-        'cafés. Some lanes are so narrow that you can touch both walls with '
-        'your arms.',
+        'Bremen’s oldest quarter, full of narrow lanes, small houses, shops '
+        'and cafés. Some lanes are so narrow that you can stretch out your '
+        'arms and touch both walls.',
     story:
-        'Fishermen, boatmen and craftsmen lived here by the Balge, an arm of '
-        'the Weser. “Schnoor” means string or cord in Low German and comes '
-        'from the old ship trades. The oldest house, Schnoor 2, is from 1401. '
-        'Many houses were restored from 1955 on.',
+        'Fishermen, boatmen and craftsmen used to live here by the Balge, an '
+        'arm of the Weser. The name Schnoor is Low German for string or cord '
+        'and comes from the old ship trades. The oldest house, Schnoor 2, '
+        'dates from 1401. Many of the houses were restored from 1955 on.',
     tradition:
-        'Look for the Katzengang, a very narrow lane. At the Bremer Bonbon '
-        'Manufaktur you can watch sweets being made by hand.',
+        'Go and find the Katzengang, a really narrow lane. Then stop at the '
+        'Bremer Bonbon Manufaktur, where you can watch them make sweets by '
+        'hand.',
     address: 'Schnoor, 28195 Bremen (tram stop Domsheide)',
     price: 'Free',
     access: 'Open-air, any time. Shops have their own hours.',
@@ -194,20 +200,22 @@ const placeStories = <int, PlaceStory>{
       NearbySight(
         name: 'St. Johann',
         line:
-            'Catholic Brick Gothic church, built in the 14th century for '
-            'Franciscan monks.',
+            'A Catholic Brick Gothic church, built for Franciscan monks in the '
+            '14th century.',
         chip: '≈ 150 m',
         icon: Icons.church,
       ),
       NearbySight(
         name: 'Kunsthalle Bremen',
-        line: 'Art museum of the Kunstverein, in its own building since 1849.',
+        line:
+            'The art museum of the Kunstverein. It has had its own building '
+            'since 1849.',
         chip: '≈ 250 m',
         icon: Icons.museum,
       ),
       NearbySight(
         name: 'St. Petri Cathedral',
-        line: 'Next stop on your route: the cathedral with two 93 m towers.',
+        line: 'Your next stop: the cathedral with two 93 m towers.',
         chip: 'Stop 4 · ≈ 300 m',
         animal: Animal.rooster,
         onRoute: true,
@@ -215,7 +223,6 @@ const placeStories = <int, PlaceStory>{
     ],
   ),
 
-  // TODO(Mohamad): rewrite in your own words
   4: PlaceStory(
     chips: [
       StoryChip('Domshof', Icons.place),
@@ -223,17 +230,18 @@ const placeStories = <int, PlaceStory>{
       StoryChip('Tower: 265 steps', Icons.directions_walk),
     ],
     about:
-        'Bremen’s Protestant cathedral, next to the Marktplatz. Its two west '
-        'towers are about 93 m high, and 265 steps lead up the south tower.',
+        'Bremen’s Protestant cathedral, right next to the Marktplatz. The two '
+        'west towers are about 93 m high. If you want to go up, the south '
+        'tower has 265 steps.',
     story:
-        'A church stood here from about 789. The oldest parts you can still '
-        'see, the crypts, are from the 11th century. In the Bleikeller, eight '
-        'mummified bodies lie in glass-topped coffins.',
+        'There has been a church here since about 789. The oldest parts you '
+        'can still see are the crypts, from the 11th century. Down in the '
+        'Bleikeller, eight mummified bodies lie in coffins with glass lids.',
     tradition:
-        'Unmarried people who turn 30 sweep the cathedral steps while friends '
-        'watch. They may stop when a “virgin” kisses them. The custom goes '
-        'back to about 1890.',
-    address: 'Sandstraße 10–12, 28195 Bremen',
+        'Unmarried people who turn 30 have to sweep the cathedral steps while '
+        'their friends watch. They can only stop when a “virgin” kisses them. '
+        'The custom goes back to about 1890.',
+    address: 'Sandstraße 10-12, 28195 Bremen',
     price: 'Dom-Museum free. Tower and Bleikeller: check prices.',
     access: 'Check opening times. Tower and Bleikeller are seasonal.',
     photos: [
@@ -263,22 +271,23 @@ const placeStories = <int, PlaceStory>{
       NearbySight(
         name: 'Domshof',
         line:
-            'Square north of the cathedral, with the Neptune Fountain (1991).',
+            'The square north of the cathedral, with the Neptune Fountain from '
+            '1991.',
         chip: '≈ 100 m',
         icon: Icons.place,
       ),
       NearbySight(
         name: 'Bremer Loch',
         line:
-            'A coin slot in the pavement by the Bürgerschaft. Drop a coin and '
-            'hear the animals.',
+            'A coin slot in the pavement by the Bürgerschaft. Drop a coin in '
+            'and you’ll hear the animals.',
         chip: 'Finale',
         isCoin: true,
         onRoute: true,
       ),
       NearbySight(
         name: 'Bremen Town Musicians',
-        line: 'Stop 1: the statue where your band began.',
+        line: 'Back to stop 1, the statue where your band started.',
         chip: 'Stop 1 · ≈ 100 m',
         animal: Animal.donkey,
         onRoute: true,
