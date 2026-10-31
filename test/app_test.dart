@@ -7,6 +7,7 @@ import 'package:discover_bremen/screens/onboarding_screen.dart';
 import 'package:discover_bremen/screens/place_details_screen.dart';
 import 'package:discover_bremen/services/sound_service.dart';
 import 'package:discover_bremen/theme/app_motion.dart';
+import 'package:discover_bremen/theme/app_scroll_behavior.dart';
 import 'package:discover_bremen/theme/app_theme.dart';
 import 'package:discover_bremen/widgets/route_stop_tile.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,11 @@ void main() {
     useScreen(tester, small);
     await tester.pumpWidget(const DiscoverBremenApp());
     expect(find.text('Four animals set off for Bremen.'), findsOneWidget);
+    // Mouse drags work in Chrome too (see place_story_test.dart).
+    expect(
+      tester.widget<MaterialApp>(find.byType(MaterialApp)).scrollBehavior,
+      isA<AppScrollBehavior>(),
+    );
 
     await tester.tap(find.text('Skip'));
     await tester.pumpAndSettle();

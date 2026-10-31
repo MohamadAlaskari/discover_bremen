@@ -2,9 +2,11 @@ import 'package:discover_bremen/data/place_stories.dart';
 import 'package:discover_bremen/data/places.dart';
 import 'package:discover_bremen/screens/place_details_screen.dart';
 import 'package:discover_bremen/screens/place_story_screen.dart';
+import 'package:discover_bremen/theme/app_scroll_behavior.dart';
 import 'package:discover_bremen/theme/app_theme.dart';
 import 'package:discover_bremen/widgets/page_dots.dart';
 import 'package:discover_bremen/widgets/photo_carousel.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -20,7 +22,12 @@ void useScreen(WidgetTester tester, Size size) {
   addTearDown(tester.view.reset);
 }
 
-Widget app(Widget home) => MaterialApp(theme: AppTheme.light(), home: home);
+/// Theme and scroll behavior as in main.dart.
+Widget app(Widget home) => MaterialApp(
+  theme: AppTheme.light(),
+  scrollBehavior: const AppScrollBehavior(),
+  home: home,
+);
 
 /// Drags the sheet up and scrolls its text to the end.
 Future<void> scrollSheetToEnd(WidgetTester tester) async {
@@ -95,6 +102,35 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(tester.getTopLeft(find.text(place.name)).dy, titleBefore);
+  });
+
+  testWidgets('a mouse swipes the photos and pulls the sheet (Chrome)', (
+    tester,
+  ) async {
+    useScreen(tester, large);
+    final place = places.first;
+    await tester.pumpWidget(app(PlaceStoryScreen(place: place)));
+    await tester.pumpAndSettle();
+
+    await tester.drag(
+      find.byType(PageView),
+      const Offset(-400, 0),
+      kind: PointerDeviceKind.mouse,
+    );
+    await tester.pumpAndSettle();
+    expect(tester.widget<PageDots>(find.byType(PageDots)).page, 1);
+
+    final titleBefore = tester.getTopLeft(find.text(place.name)).dy;
+    await tester.drag(
+      find.text('The story'),
+      const Offset(0, -300),
+      kind: PointerDeviceKind.mouse,
+    );
+    await tester.pumpAndSettle();
+    expect(
+      tester.getTopLeft(find.text(place.name)).dy,
+      lessThan(titleBefore - 200),
+    );
   });
 
   testWidgets('all sections from Figma and the photo credits', (tester) async {

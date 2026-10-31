@@ -4,6 +4,7 @@ import 'data/app_strings.dart';
 import 'screens/onboarding_screen.dart';
 import 'services/sound_service.dart';
 import 'theme/app_colors.dart';
+import 'theme/app_scroll_behavior.dart';
 import 'theme/app_theme.dart';
 
 /// Entry point: prepare the sounds, then start the app.
@@ -27,6 +28,8 @@ class DiscoverBremenApp extends StatelessWidget {
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
+      // Mouse drags swipe and scroll too (flutter run -d chrome).
+      scrollBehavior: const AppScrollBehavior(),
       builder: (context, child) => ColoredBox(
         color: AppColors.surfaceMuted,
         child: Center(
