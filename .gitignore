@@ -47,14 +47,8 @@ app.*.map.json
 # Widget Preview related
 .widget_preview/
 
-# Local tool data (not part of the app)
-.claude/data/
-
 # Unzipped copy of discover-bremen-sounds.zip - the app uses assets/sounds/
 discover-bremen-sounds/
 
-# Browser-test screenshots and snapshots (Playwright)
-.playwright-mcp/
-
-# Generated submission zips (see README, 'Submitting only lib/')
+# Generated submission zip (tool/make_submission.ps1)
 submission/

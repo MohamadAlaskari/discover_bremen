@@ -21,6 +21,8 @@ Needs **Flutter 3.38 or newer** (built and tested with Flutter 3.47.7 /
 Dart 3.13). The UNDO snackbar uses `SnackBar(persist: false)`, which came
 with Flutter 3.38.
 
+Unzip `discover_bremen.zip`, open the `discover_bremen` folder, then:
+
 ```bash
 flutter pub get
 flutter run -d chrome        # or an Android emulator / phone
@@ -31,14 +33,6 @@ flutter analyze              # No issues found!
 In Chrome you can also drag with the mouse: swipe the onboarding pages and
 the photos, and pull the story sheet up.
 
-### Running the submitted zip
-
-| File | Contains | How to run |
-|---|---|---|
-| `lib.zip` | `lib/` only | `flutter create discover_bremen`, replace its `lib/` folder with this one, then `flutter run`. No extra package is needed: sounds play as a short system click. |
-| `lib_pubspec_assets.zip` | `lib/`, `pubspec.yaml`, `assets/`, this README | `flutter create discover_bremen`, replace `lib/` and `pubspec.yaml`, add `assets/`, then `flutter pub get` and `flutter run`. This version plays the real sounds. Run `dart run flutter_launcher_icons` once to get the app icon too. |
-
-`lib/` uses relative imports only, so it works in a project with any name.
 The photos on the Read-more screens come from the internet; without a
 connection the app shows a placeholder with the photo's caption instead.
 
@@ -114,7 +108,8 @@ assets/sounds/                  11 mp3 + SOUNDS.txt
 assets/icon/                    launcher icon from Figma: full, background, foreground (1024 px)
 docs/
   place_stories.json            Read-more texts, photo URLs, credits, sources (input, not compiled)
-  sound_service_lib_only.dart   SoundService without packages (used in lib.zip)
+tool/
+  make_submission.ps1           packs the project into submission/discover_bremen.zip
 test/
   app_test.dart                 flows + layout on small and large phones
   place_story_test.dart         Read more: every story, swipe, sheet, sections, offline
@@ -210,12 +205,6 @@ tool, see below):
 
 Audio errors are caught, so a missing speaker never crashes a screen.
 
-`docs/sound_service_lib_only.dart` is the same class without any package.
-It has the same public API, so no screen changes: sounds become the system
-click, and haptics, stamp, voice bubbles and tower stay. `lib.zip` contains
-this version, so it runs in a fresh Flutter project without `audioplayers`.
-Both versions pass `flutter analyze` (0 issues) and all tests.
-
 ## App icon
 
 The launcher icon is designed in Figma on the page *App Icon*: the
@@ -232,6 +221,6 @@ set and the web icons and favicon:
 dart run flutter_launcher_icons
 ```
 
-The icon files live in `android/`, `ios/` and `web/`, so `lib.zip` cannot
-carry them; `lib_pubspec_assets.zip` contains `assets/icon/` and the
-configuration to create them.
+The generated icons are already in `android/`, `ios/` and `web/`, so
+`flutter run` shows the new icon. The command is only needed again after
+changing the PNGs.
