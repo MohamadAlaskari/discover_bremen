@@ -21,13 +21,18 @@ Needs **Flutter 3.38 or newer** (built and tested with Flutter 3.47.7 /
 Dart 3.13). The UNDO snackbar uses `SnackBar(persist: false)`, which came
 with Flutter 3.38.
 
-Unzip `discover_bremen.zip`, open the `discover_bremen` folder, then:
+The zip holds `lib/`, `pubspec.yaml`, `assets/` and this README. To run it:
+
+1. `flutter create discover_bremen`
+2. Replace the new project's `lib/` and `pubspec.yaml` with the ones from
+   the zip and copy `assets/` into the project folder.
+3. Delete `test/widget_test.dart` (the counter test from the template).
+4. In the project folder:
 
 ```bash
 flutter pub get
-flutter run -d chrome        # or an Android emulator / phone
-flutter test                 # 22 widget tests
-flutter analyze              # No issues found!
+dart run flutter_launcher_icons   # app icon from Figma (optional)
+flutter run -d chrome             # or an Android emulator / phone
 ```
 
 In Chrome you can also drag with the mouse: swipe the onboarding pages and
@@ -109,7 +114,7 @@ assets/icon/                    launcher icon from Figma: full, background, fore
 docs/
   place_stories.json            Read-more texts, photo URLs, credits, sources (input, not compiled)
 tool/
-  make_submission.ps1           packs the project into submission/discover_bremen.zip
+  make_submission.ps1           builds submission/lib_pubspec_assets.zip
 test/
   app_test.dart                 flows + layout on small and large phones
   place_story_test.dart         Read more: every story, swipe, sheet, sections, offline
@@ -221,6 +226,6 @@ set and the web icons and favicon:
 dart run flutter_launcher_icons
 ```
 
-The generated icons are already in `android/`, `ios/` and `web/`, so
-`flutter run` shows the new icon. The command is only needed again after
-changing the PNGs.
+The icon files live in `android/`, `ios/` and `web/`, which are not in the
+zip. After `flutter create`, the command above creates them from
+`assets/icon/`.
